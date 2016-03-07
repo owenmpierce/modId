@@ -1,0 +1,27 @@
+#LModkeen definition file for Keen 4
+GALAXY 
+	GAMEEXT ck4
+	GRAPHICSFORMAT CGA
+	GRSTARTS 3
+	EXEINFO keen4c.exe 0x3B080 0x1EA30 0x3375C 0x2C00
+	CHUNKS 4751
+		FONT		2 3	#num, start
+		FONTM		0 5
+		PICS            116 5 0      #num, start, tablestart
+		PICM            3 121 1   
+		SPRITES         397 124 2 
+		TILE8           104 521  
+		TILE8M          20 522   
+		TILE16          1296 523 
+		TILE16M         2916 1819
+		TILE32          0 4735   
+		TILE32M         0 4735   
+		TEXT    	7 4739
+		DEMO    	5 4746	
+
+		B800TEXT 4735 endgame
+		TERMINATOR 4736 commander
+		TERMINATOR 4737 keen
+		B800TEXT 4738 outofmem
+			
+

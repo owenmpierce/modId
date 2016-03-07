@@ -1,0 +1,26 @@
+#LModkeen definition file for Keen 6
+GALAXY 
+	GAMEEXT ck6
+	GRSTARTS 3
+	EXEINFO keen6.exe 0x3F950 0x20F50 0x372EE 0x2C00 
+	CHUNKS 5560
+		FONT		3 3				#num, start
+		FONTM		0 3
+		PICS            37  6	 0      #num, start, tablestart
+		PICM            3   43 	 1   
+		SPRITES         390 46   2 
+		TILE8           104 436  
+		TILE8M          12 437   
+		TILE16          2376 438 
+		TILE16M         2736 2814
+		TILE32          0 5550   
+		TILE32M         0 5550   
+		DEMO    	5 5555	
+		TEXT    	1 5550
+		B800TEXT 5551 endgame
+		TERMINATOR 5552 commander
+		TERMINATOR 5553 keen
+		B800TEXT 5554 outofmem
+			
+
+

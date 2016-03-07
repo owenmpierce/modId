@@ -1,0 +1,19 @@
+#LModkeen definition file for Rescue Rover 2
+GALAXY 
+	GAMEEXT rr2
+	GRSTARTS 4
+	EXEINFO rover2.exe 0x2E930 0x23060 0x281F2 0x1400 
+	CHUNKS 1030
+		FONT		1 3		#num, start
+		FONTM		0 3
+		PICS            167  4	 0      #num, start, tablestart
+		PICM            2   171  1   
+		SPRITES         135 173  2 
+		TILE8           36 308  
+		TILE8M          36 309   
+		TILE16          432 310
+		TILE16M         288 742
+		TILE32          0 1030
+		TILE32M         0 1030
+
+

@@ -1,0 +1,22 @@
+#LModkeen definition file for Catacomb-3D: The Descent (1991-1993 Softdisk)
+GALAXY 
+	GAMEEXT c3d
+	GRSTARTS 3
+	EXEINFO cat3d.exe 0x2D7A0 0x1A880 0x22FD8 0x1600 
+	CHUNKS 478
+		FONT		2 3		#num, start
+		FONTM		0 3
+		PICS            155 5 0
+		PICM            3 160 1
+		SPRITES         3 163 2
+		TILE8           108 166
+		TILE8M          36 167  
+		TILE16          216 168
+		TILE16M         72 384
+		TILE32          0 456 
+		TILE32M         0 456
+		TEXT		20 456   
+		B800TEXT	476 dos-screen-1
+		MISC 		477 misc-1 #Don't know what this is, but CA_ClearMarks says there's 478 chunks
+
+

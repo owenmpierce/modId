@@ -1,0 +1,21 @@
+#LModkeen definition file for Catacomb Armageddon (1992 Froggman)
+GALAXY 
+	GAMEEXT arm
+	GRSTARTS 3
+	EXEINFO catarm.exe 0x2E840 0x1BE00 0x24648 0x2000 
+	CHUNKS 658 #Found 658 chunks in CA_ClearMarks
+		FONT		1 3		#num, start
+		PICS            344 4 0
+		PICM		1 348 1
+		SPRITES         1 349 2
+		TILE8  		108 350         
+		TILE8M          36 351  
+		TILE16          216 352
+		TILE16M         72 568
+		TILE32          0 640
+		TILE32M         0 640
+		TEXT		17 640
+		MISC		657 misc-1
+		
+
+

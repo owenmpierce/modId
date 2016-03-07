@@ -1,0 +1,21 @@
+#LModkeen definition file for Keen Dreams v1.13
+GALAXY 
+	GAMEEXT kdr
+	GRAPHICSFORMAT CGA
+	GRSTARTS 4
+	EXEINFO kdreams.exe 0x2fe50 0x18df0 0x27c94 0x1800
+	#EXEINFO kdreams.exe 0x2fe50 0x1a5f0 0x29494 0x1800
+	CHUNKS 3016
+		FONT		1 3		#num, start
+		FONTM		0 4
+		PICS            65  4	 0      #num, start, tablestart
+		PICM            2   69 	 1
+		SPRITES         297 71   2 
+		TILE8           72 368
+		TILE8M          36 369   
+		TILE16          1440 370 
+		TILE16M         1206 1810
+		TILE32          0 3016 
+		TILE32M         0 3016   
+
+

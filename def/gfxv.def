@@ -1,0 +1,30 @@
+#Modid definition file for CK SOURCE MOD
+
+#Note that we must leave ONE DUMMY chunk at the end
+#Because ModId does not make EGAHEADS properly
+GALAXY 
+        GAMEEXT cks
+        GRSTARTS 3
+        GRAPHICSFORMAT VGA
+        CHUNKS 4444
+                FONT            3 3             #num, start
+                FONTM           0 3
+                PICS            35 6 0      #num, start, tablestart
+                PICM            3 41 1   
+                SPRITES         168 44 2 
+                TILE8           104 212  
+                TILE8M          20 213   
+                TILE16          1296 214 
+                TILE16M         2916 1510
+                TILE32          0 4426   
+                TILE32M         0 4426   
+                TEXT            7 4426
+                DEMO            6 4433  
+
+                B800TEXT 4439 endgame
+                TERMINATOR 4440 commander
+                TERMINATOR 4441 keen
+                B800TEXT 4442 outofmem
+                TERMINATOR 4443 lastchunk
+                        
+                

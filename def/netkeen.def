@@ -1,0 +1,17 @@
+#LModkeen definition file for netkeen
+GALAXY 
+	GAMEEXT ck5
+	GRSTARTS 3
+	CHUNKS 5241
+		FONT		3 3	#num, start
+		FONTM		0 3
+		PICS            21 6 0	#num, start, tablestart
+		PICM            3 27 1   
+		SPRITES         745 30 2 
+		TILE8           30 775
+		TILE8M          12 776
+		TILE16          1512 777
+		TILE16M         2952 2289
+		TILE32          0 5241
+		TILE32M         0 5241
+		

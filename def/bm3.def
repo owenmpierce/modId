@@ -1,0 +1,23 @@
+#LModkeen definition file for Biomenace 3
+GALAXY 
+	GAMEEXT bm3
+	GRSTARTS 3
+	CHUNKS 4230
+		FONT		2 3	#num, start
+		FONTM		0 5
+		PICS            41 5 0      #num, start, tablestart
+		PICM            1 46 1   
+		SPRITES         408 47 2 
+		TILE8           108 455 
+		TILE8M          12 456   
+		TILE16          1080 457
+		TILE16M         2682 1537
+		TILE32          0 4219
+		TILE32M         0 4219
+		TEXT    	6 4219
+		DEMO    	3 4225	
+
+		B800TEXT 4228 endgame
+		B800TEXT 4229 outofmem
+			
+

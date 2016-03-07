@@ -1,0 +1,18 @@
+#LModkeen definition file for Dangerous Dave 4
+GALAXY 
+	GAMEEXT dav
+	GRSTARTS 4
+	EXEINFO dave.exe 0x32B90 0x1FDA0 0x299BC 0x2A00 
+	CHUNKS 1948
+		FONT		1 2
+		FONTM		0 2
+		PICS            92 3 0
+		SPRITES         338 95 1
+		TILE8		108 434
+		TILE8M          36 435
+		TILE16          648 436
+		TILE16M         864 1084
+		TILE32          0 1948
+		TILE32M         0 1948
+
+

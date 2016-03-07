@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Minimalistic Make script for LModKeen I
+# It's based on the original MAKE.BAT wrote (probably) by Andy Durdin, included in the ModKeen 2.0.1 distribution.
+
+if [[ ${1} == "!" ]] ;
+        then MAKEOPT="-g"
+        else MAKEOPT="-O2 -s"
+fi
+
+gcc -g -Wall -I../include bmp256.c evald.c huff.c k5splode.c keen123.c keen456.c lz.c modkeen.c parser.c pconio.c switches.c utils.c -o modid -lncurses -lm
