@@ -1,0 +1,5705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>Readme: LModKeen 2 - ModKeen 2 ported to Windows and GNU/Linux!</title>
+  <meta content="Ignacio R. Morelle" name="author">
+</head>
+
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big><big style="font-weight: bold;">LModKeen 2 release One - a Windows &amp; GNU/Linux port of
+ModKeen 2.0.1</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><span style="font-style: italic;">ModKeen 2.0.1 source code is
+Copyright (C) 2002-2004 by Andrew Durdin &lt;<a href="mailto:andy@durdin.net">andy@durdin.net</a>&gt;</span><br style="font-style: italic;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-style: italic;">LModKeen&nbsp;is derived
+work from the above, Copyright (C) 2007 by Ignacio R. Morelle &lt;<a href="mailto:shadowm2006@gmail.com">shadowm2006@gmail.com</a>&gt;<span style="color: rgb(255, 0, 0); font-weight: bold;"></span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+<big><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<small style="font-weight: bold;"><a name="toc"></a>Table
+of Contents</small></big></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;">
+<table style="text-align: left; width: 401px; height: 243px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <td style="background-color: rgb(204, 204, 204);"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>0.
+      <a href="#0_disclaimer">Legal Disclaimer</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. <a href="#1_intro">Introduction</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. <a href="#2_news">What's new</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; 2.1. <a href="#2_news_modkeen">ModKeen
+2.0.1 versus ModKeen 1</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; 2.2. <a href="#2_news_linuxport">LModKeen 2 versus LModKeen I</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. <a href="#3_build">Building and installing</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. <a href="#4_usage">Usage</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. <a href="#5_files">Outputs</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+6. <a href="#6_contact">Contact information</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. <a href="#7_acknowledgements">Acknowledgements</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+8. <a href="#8_changelog">Changelog</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; 8.1 <a href="#8_changelog_linuxport">LModKeen</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; 8.2 <a href="#8_changelog_officialbuild">ModKeen</a><br>
+
+
+
+9. <a href="#9_bugs">Known bugs</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+10. <a href="#9_todo">To-do List</a></big></font></big></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="0_disclaimer"></a>0.
+LEGAL DISCLAIMER</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+This software is provided <span style="font-weight: bold;">as-is</span>,
+<span style="font-weight: bold;">without any express or
+implied warranty</span>.
+In no event will the authors be held liable for any damages arising
+from the use of this software. Permission is granted to anyone to use
+this software for any purpose, including commercial applications, and
+to alter it and redistribute it freely, subject to the following
+restrictions:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<ol style="font-style: italic;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>The
+origin of this software must not be misrepresented; you must not
+&nbsp;claim that you wrote the original software. If you use this
+software in a product, an acknowledgment in the product documentation
+would be appreciated but is not required.</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Altered
+source versions must be plainly marked as such, and must not be
+misrepresented as being the original software.</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>This
+notice may not be removed or altered from any source distribution.</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="1_intro"></a>1.
+INTRODUCTION</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ModKeen allows the creation of <span style="font-style: italic;">Commander
+Keen</span> mods. It is a command-line utility that will export
+graphics from <span style="font-style: italic;">Commander
+Keen</span> into BMP files, and import those BMPs back into <span style="font-style: italic;">Commander Keen</span>'s
+graphics files. ModKeen allows you to:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Modify&nbsp;all
+the tileset graphics in <span style="font-style: italic;">Commander
+Keen</span></big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Edit
+the sprite animation frames in <span style="font-style: italic;">Commander
+Keen</span></big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Change
+other images used in the menus and game</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Edit
+the font bitmaps used in the game</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>In fact, ModKeen allows you to totally
+recreate the appearance of <span style="font-style: italic;">Commander
+Keen</span>.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+The version of ModKeen this port was based on (2.0.1) supported
+importing/exporting graphics to/from <span style="font-style: italic;">Commander Keen: Invasion of the
+Vorticons</span> series (Keen 1-3), <span style="font-style: italic;">Goodbye Galaxy! series</span>
+(Keen 4-5) and <span style="font-style: italic;">Aliens
+Ate My Babysitter!</span>
+(Keen 6). This port used existing code from Andy Durdin's FIN2BMP
+utility, and integrated it in the Keen 1-3 import/export routines.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="2_news"></a>2.
+WHAT'S NEW</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big style="font-weight: bold;"><a name="2_news_modkeen"></a>2.1
+MODKEEN 2.0.x VS. MODKEEN 1</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">Andrew Durdin's ModKeen</span>
+version <span style="font-weight: bold;">2.0</span>&nbsp;supports modification of <span style="font-style: italic;">Commander
+Keen</span> episodes 4, 5, and 6. In order to modify these
+episodes, you will need either <span style="font-style: italic;">UNP</span>
+or <span style="font-style: italic;">UNLZEXE</span>
+to decompress your <span style="font-style: italic;">Commander
+Keen</span> EXE files, and also Admiral Bob's <span style="font-style: italic;">CKxPatch</span> utilities,
+version 0.9.0 or later. You can get these here:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="http://files.keenmodding.org/unp.zip"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>http://files.keenmodding.org/unp.zip</big></font></big></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="http://files.keenmodding.org/unlzexe.zip"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>http://files.keenmodding.org/unlzexe.zip</big></font></big></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="http://files.keenmodding.org/ckpatch090.zip"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>http://files.keenmodding.org/ckpatch090.zip</big></font></big></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>ModKeen
+2.0 has a totally reworked command-line interface and slightly
+different operation to version 1.0, so users of the previous versions
+should briefly review the "Usage" section below.<br>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+Some weeks later, a bug-fix release was published by ModKeen 2.0's
+author, targeted to solve issues involving Keen 1-3 data manipulation
+routines.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big style="font-weight: bold;"><a name="2_news_linuxport"></a>2.2 LMODKEEN 2 VS.
+LMODKEEN I</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Although the "official" source code/binary distributions of ModKeen are
+specifically targeted to protected-mode DOS and the DJGPP compiler,
+some people have trouble trying to make it work under Win32, UNIX,
+MacOS and GNU platforms. As the author of this port was not able to get
+the official ModKeen 2.0.1 working under GNU/Linux, the idea of a new
+port was born. And so, after three days of careful revision, testing
+and code writing, <span style="font-weight: bold;">LModKeen
+I</span> was released, one day before Keen day 2007, that is,
+March 13, 2007 .<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+That first port of the official ModKeen contained two nice features:
+the possibility of using the ncurses library for console I/O
+procedures, and the -nowait parameter, intended for scripts in which no
+user interaction is expected and the program cannot undefinitely wait
+for a keypress to end. The port also contained a few incredible bugs.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+And now, I have the pleasure to bring you a "new" port, <span style="font-weight: bold;">LModKeen 2</span>. What's
+so new about it? Read on:</big></font></big><br>
+
+
+
+
+
+
+
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>External
+Keen 1-3 bitmaps (previews screen, finale screen) can be transparently
+imported/exported along with the other graphics (FIN2BMP complementary
+tool code integration)</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Various
+bug-fixes and code revisions</big></font></big></li>
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Now
+runs under Windows (using Win32 console I/O API), and builds using
+Mingw32 cross-compiler for Linux (you don't need this anyway, I provide
+a ready-to-use executable!)<br>
+
+
+
+
+
+
+
+
+    </big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Precompiled
+Windows (32-bit PE) and GNU/Linux (ELF) binaries are
+included with the source code in the root directory of the
+distribution. They might or might not work on your system. If you have
+development libraries and/or Mingw32 installed, I recommend you
+compiling from scratch the source code.<br>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+If
+you used Andy's ModKeen 2.0.1 (official) before, you might want to have a look
+at the "Usage" section below, since a new parameter has been added and
+some functionality has been modified. If you used FIN2BMP before, you'll find out that you no longer need it with LModKeen 2.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="3_build"></a>3.
+BUILDING AND INSTALLING</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+First of all, make sure your GNU/Linux installation satisfies the
+following requirements:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>GNU
+C Compiler (4.x recommended, has not been tested with GCC &lt;= 3.x)</big></font></big></li>
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>GNU Make<br>
+
+
+
+
+
+
+    </big></font></big></li>
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Standard
+C Library development files</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>ncurses
+run-time shared libraries</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>ncurses
+development files (often found in distros as the
+"ncurses-devel-something" package)</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>If you want to build LModKeen 2 for Windows (Win32) using Mingw32's tools, you'll need the following:<br>
+
+
+
+
+
+
+</big></font></big>
+<ul>
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Mingw32 GNU C compiler</big></font></big></li>
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>GNU Make<br>
+
+
+
+
+
+
+    </big></font></big></li>
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Win32 SDK development libraries and headers<br>
+
+
+
+
+
+
+    </big></font></big></li>
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>I've
+successfully compiled LModKeen 2 for Windows using a Mingw-based
+cross-compiler that runs on GNU/Linux. If you get it to work on native
+Win32 Mingw or more exotic environments (i.e. MacOS X, *BSD UNIX,
+Solaris, BeOS, etc.), see Section 6 (Contact info) below and send me
+your recipe. :)<br>
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+No
+additional libraries are required, since the original ModKeen 2.x did
+not depend on any. The ncurses library is currently required to replace
+DOS console I/O routine calls on UNIX operating systems. The
+Windows-based build uses the kernel library (kernel32.lib) and platform
+header (windows.h) only.<span style="font-style: italic; font-weight: bold; color: rgb(255, 0, 0);"></span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+Unpack the source code .tar.gz with the following commands, assuming
+you copied the archive in the desired folder. The sub-directory
+"lmodkeen2-rel1" will be automatically created:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <td style="background-color: rgb(204, 204, 204);"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>$ tar -jxvf lmodkeen2-rel1.tar.bz2<br>
+
+
+
+
+
+      </big></font></big><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>
+
+
+
+
+
+
+
+$ cd ./lmodkeen2-rel1</big></font></big></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+Now, change to subdirectory "build-gnulinux" if you want to build for
+GNU/Linux, or to "build-mingw32-linux" if you want to build for Win32
+from GNU/Linux. Then, run "make" (I assume you have GNU Make installed
+and its binary is called "make"; if it's name is something else,
+replace it in the command line).<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <td style="background-color: rgb(204, 204, 204);"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>$
+cd ./build-&lt;config name&gt;<br>
+
+
+
+
+
+$ make</big></font></big></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+If it refuses to build, make sure you have all required libraries and development files installed.</big></font></big><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>
+
+
+
+
+
+
+
+After that, everything should compile correctly. If it doesn't, see
+<a href="#6_contact">section 6</a> (Contact Information). The resultant executable will be named
+"lmodkeen" and it will be located in the same folder where "build" is
+located. If you want to run the program, make sure it is in your $PATH
+and simply write:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <td style="background-color: rgb(204, 204, 204);"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>$
+lmodkeen</big></font></big></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+(See below section for usage information.) Most Linux distros create
+automatically a folder named "bin" in the root of your user's account
+(normally located at /home/yourname). You should copy lmodkeen there so
+that it'll be always in your, and only *your* account's $PATH. If the
+folder does not exist, try to create it and copy lmodkeen there, and
+then try to run it from anywhere without specifying the full path to it.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+In the almost-the-worst case, you can manually copy the executable to
+/usr/bin if you know the root password using:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <td style="background-color: rgb(204, 204, 204);"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>$
+su -c "cp ./lmodkeen /usr/bin/lmodkeen"</big></font></big></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+And, in the worst case, copy it to any folder you can easily remember
+and run it from there using the full path. Anyways, my personal recommendation is to
+copy it in your Keen mod's folder if you can't put it in your $PATH.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="4_usage"></a>4.
+USAGE</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Before using ModKeen, set up a copy of the episode you wish to mod in
+its own directory to avoid the risk of data loss. It is recommended to create a subdirectory in there
+to hold the BMP files, but it's not necessary. You'll surely need to
+decompress the EXE file with UNP or UNLZEXE, and you'll need CKxPatch
+to run the game after you've imported the graphics, so copy that into
+your mod directory also. Decompressing the EXE does not alter the
+program, it only decompresses it, and it does not have any negative
+effects, except that it will take some extra kilobytes of disk space
+(not important unless you are using a floppy disk).<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Open a Linux terminal, with your favourite client (native, xterm, rxvt,
+Konsole, etc.), and change to the directory where your mod will be. To
+export the graphics into Windows Bitmap (*.BMP) files, run ModKeen with
+the -export command (see below for details of the switches). After
+editing the bitmaps, you can use the -import command to load them back
+into Commander Keen.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ModKeen accepts the following switches:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-nowait</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Normally,
+after finishing any
+import/export procedure, this port prints the message "press any key"
+and waits for a keypress to terminate. If you add this switch, it won't
+wait for any key to terminate, something that could be useful if you
+write&nbsp;scripts that import/export mod files automatically.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-episode=N</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Specifies
+the episode that you
+wish to work with. Give N as 1, 2, 3, 4, 5, 6 or D (Keen Dreams). This
+switch is required.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-export</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Specifies
+that you wish to export
+all the Keen data into BMP files. Either this switch or -import must be
+specified.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-import</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Specifies
+that you wish to import
+the BMP files into Keen. Either this switch or -export must be
+specified.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-keendir="DIRECTORY"</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Specifies
+the directory where the
+Commander Keen files to export from or import&nbsp; to can be
+found. If
+the directory does not exist, then ModKeen will abort with an error
+message. If this switch is not specified, then ModKeen will look in the
+current directory.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-bmpdir="DIRECTORY"</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Specifies
+the location where the
+BMP files to export to or import from should be created. If the
+directory does not exist, then ModKeen will abort with an error
+message. If this switch is not specified, then ModKeen will create the
+bitmaps in the current directory.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-backup</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Specifies
+that ModKeen should
+backup all the files it changes. ModKeen will create backups by
+appending ".bak" and a number onto the filename. ModKeen will never
+delete or overwrite a previous backup, but will create a new backup
+instead.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">-help</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ModKeen
+will provide a brief summary of the switches that it supports.<br>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+In the case you experience error messages like "cannot find
+EGAGRAPH.CK4", and you have the file "egagraph.ck4" in the folder, a
+filename normalizer script has been included in the directory "tools" of this
+distribution. See its readme file in the same directory.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="5_files"></a>5.
+OUTPUTS</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+When exporting, ModKeen outputs the graphics into 16-colour BMP files
+in the directory specified with the -bmpdir switch. Below is a listing
+of the files it produces. In the filenames, "x" is the episode number
+(Keen Dreams is numbered as episode 7),
+and "nnnn" a four-digit number; the first BMP file for each type of
+data is numbered 0000.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xBMPnnnn.BMP</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; The
+variable-sized bitmap images
+used in the menus, ending sequences, and menus. These BMP files must
+always be a multiple of 8 pixels wide.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xEXTnnnn.BMP</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; The
+external, variable-sized
+bitmap images used for the previews menu and finale screen in Keen 1-3.
+These follow the same size rule described above. They are called
+external because they are not stored directly in Keen's EGAGRAPH file,
+but in separate external files such as PREVIEW2.CK1, PREVIEW3.CK1, and
+FINALE.CKx. They could also be imported/exported manually using the
+external tool FIN2BMP, written by Andrew Durdin.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xMBMnnnn.BMP</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Episodes
+4, 5, and 6 only: Masked
+variable-width bitmaps used in-game. These BMP files must always be a
+multiple of 16 pixels wide. The right-hand half of the bitmap is the
+transparency mask; it is white where the bitmap should be transparent,
+and black where it should be opaque.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xSPRnnnn.BMP</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; The
+variable-sized sprite images
+used in the game. These BMP files must always be a multiple of 24
+pixels wide, and consist of three equal sections. The left hand section
+is the sprite image; the middle is the transparency mask; and the
+right-hand edge&nbsp;shows the clipping rectangle for the sprite.
+In
+the game, the clipping rectangle marks the part of the sprite which
+collides with other objects. For episodes 1, 2, and 3, you can set the
+clipping rectangle by changing the size and/or location of the bright
+red rectangle. For episodes 4, 5, and 6, see the xSPRITES.TXT entry
+below.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xTILnnnn.BMP</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; These are
+the tiles used in the
+game. For episodes 1, 2, and 3, only xTIL0000.BMP will be present,
+containing all the 16x16 tiles, organised into 13 columns. For episodes
+4, 5, and 6, xTIL0000.BMP will contain all the 16x16 background-layer
+tiles, organised into 18 columns; xTIL00001.BMP contains all the 16x16
+foreground-layer masked tiles, organised into 18 columns, with the
+right-half of the bitmap containing the transparency masks;
+xTIL0002.BMP contains all the 8x8 tiles used in the game, arranged in a
+single column; and xTIL0003.BMP contains all the 8x8 masked tiles used
+in the game, also in a single column.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xFONnnnn.BMP</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; These are
+the fonts used in the
+game. The fonts are divided into 16x16 equal-sized cells, each
+containing a single character. For episodes 1, 2, and 3, only one font
+file is present; it is a multicoloured font with an opaque background.
+For episodes 4, 5, and 6, all the fonts are black and white only,
+although they can have variable-width characters: each character is
+drawn in white on a black background the width of the character, with
+dark grey filling the rest of the cell.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xSPRITES.TXT</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Episodes
+4, 5, and 6 only: This
+file contains extra information about each sprite. Each line in the
+file has the sprite number, followed by the four clipping rectangle
+co-ordinates in square brackets [top, left, bottom, right], followed by
+the sprite origin in square brackets [top, left], followed by the
+number of shifts the sprite uses. The origin of the sprite image is the
+point from which its location is calculated. For example, the hand
+sprite in Keen 5 (5SPR0291.BMP) has several images. The origin for each
+of these images is in the centre of the "eye", so that as the hand
+rotates, the different sprite images all appear to rotate about the
+eye. The origin coordinates are given in pixels from the top-left
+corner of the sprite image. The shifts is the number of different
+copies of the sprite image that are stored in memory, and can be 1, 2,
+or 4. As a general rule, the more shifts a sprite has, the smoother it
+moves, but the more memory it takes up. If you are making a very large
+sprite, you can reduce the number of shifts to save memory. But if you
+have a small sprite and want it to move more smoothly, increase the
+number of shifts.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xTXTnnnn.TXT</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Episodes
+4, 5, and 6 only: These
+text files contain the help, story, and end-game text. Each file
+consists of plain text, with embedded commands for displaying pictures
+and creating new pages. The commands you can use are:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+^P&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Marks the
+beginning of a page.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+^Gy,x,n&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;Displays bitmap
+number (n - 6) at pixel location x,y on the screen.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+^Cc&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Changes the text to colour c, which is a
+single hex
+digit, 0-9 or A-F.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+^Ly,x&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;Following text will be written beginning at pixel
+location
+x,y.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+^Ty,x,n,t&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; After a
+delay of t time units (t/100 seconds?),
+displays bitmap number (n - 6) at pixel location x, y on the screen.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+^By,x,w,h,c&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;Fills the w-by-h-pixel rectangle at pixel
+location
+x,y with colour 4 (the c parameter is ignored in version 1.4).<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+^E&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Marks the end of the
+text.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xMSCnnnn.BIN</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Episodes
+4, 5, and 6 only: These
+are binary files needed for correct operation of Keen. Two of them are
+the low-memory error and the final "Thanks for Playing" color
+text screens, which you can edit with an ANSI editor. The other .BIN
+files should not be modified.<br>
+
+
+
+
+
+
+
+
+</big></font></big><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">xDOSnnnn.BIN</span><br>
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Episodes
+4, 5, and 6 only: text-mode Initialization screen, which you can edit
+with an ANSI editor. Note that this is exported from the game
+executable file, and will not be imported back onto it. However, when
+you import data, the generated patch file will contain an additional
+line (<span style="font-style: italic;">%patchfile $yyyy xDOSnnnn.BIN</span>) for each of these screen files.<br>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+</big></font></big><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>
+
+
+
+
+<span style="font-weight: bold;">DEMOn.CKx</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Episodes
+4, 5, and 6 only: These
+are the demos that are shown in the game. Using the F10+D cheat, you
+can record your own demos, and then import them back into the game, so
+that you have demos of your own levels.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-weight: bold;">KEENx.PAT</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Episodes
+4, 5, and 6 only: After
+importing, this .PAT file is created in the directory specified with
+the -keendir switch. It contains the command "<span style="font-style: italic;">%egahead EGAHEAD.CKx</span>",
+which causes CKxPatch to load the new EGAHEAD file into memory. After
+importing, you must run Keen using CKxPatch with this patch file, or it
+will crash.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="6_contact"></a>6.
+CONTACT INFORMATION</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>You
+can always post in <span style="font-style: italic;">Keen:
+Modding</span> (<a href="http://www.keenmodding.org/">www.keenmodding.org</a>)
+or the <span style="font-style: italic;">Public Commander
+Keen Forum</span> (<a href="http://www.pckf.com/">www.pckf.com</a>),
+Modding sub-forum, to ask for help if you have trouble when making a
+mod.</big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+This port was written by me, <span style="font-weight: bold;">Ignacio
+R. Morelle</span>, more known in the <span style="font-style: italic;">Keen: Modding</span> and <span style="font-style: italic;">Public Commander Keen</span>
+forums as the "<span style="font-style: italic;">Shadow
+Master</span>".
+Since I wrote this port using and modifying Andy Durdin's code, I'm responsible for
+answering your GNU/Linux port-specific questions and problems. You can
+contact me in Keen: Modding, by posting a bug
+report/complaint/wish-list in the ModKeen sub-forum, topic "LModKeen",
+or sending me a personal message. </big></font></big><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>If
+for some reason I never get to respond, you might want to try sending
+me an e-mail. My main address is <a href="mailto:shadowm2006@gmail.com">shadowm2006@gmail.com</a>.</big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Any other messages related to ModKeen in general should be posted as
+new topics in the ModKeen sub-forum.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="7_acknowledgements"></a>7.
+ACKNOWLEDGEMENTS</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thanks go to Andrew Durdin for publishing the complete source code to
+his ModKeen 1.0/2.x and Fin2BMP modding tools. Without him, this port
+would not have been possible. Most of it consists of slightly modified
+ModKeen 2.0.1 source code and some code copied from Fin2BMP in order to
+support Keen 1-3 external graphics files.<br>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+Thanks to Malvineous for the generic script and mini-program that convert lowercase filenames to uppercase.<br>
+
+
+
+<br>
+
+
+
+
+
+Also thanks to Szevvy for the useful information he gave me on Bio
+Menace data files, and Sarah "Levellass" for the hacked ModKeen 2
+source code that handles Shadow Knights and Dangerous Dave 2 graphics.<br>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+The method fileexists() in utils.c was copied from Supertux 0.1.3
+source code (setup.cpp) for replacing DOS-specific code that was there
+in the original ModKeen 2.0.1 source.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ModKeen&nbsp;2.0.1 is Copyright (C) 2002-2004 by Andrew Durdin
+(<a href="mailto:andy@durdin.net">andy@durdin.net</a>).
+He greets and&nbsp;thanks Anders Gavare and Daniel
+Olson for their assistance.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fin2BMP is Copyright (C) 2002 by Andrew Durdin.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>LModKeen
+2 is derived work from the above, Copyright (C) 2007 by Ignacio R.
+Morelle (<a href="mailto:shadowm2006@gmail.com">shadowm2006@gmail.com</a>).<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+Commander Keen&nbsp;is property of Id Software Inc. The original Keen
+1-5 games were developed by Id Software for Apogee Software. Keen
+Dreams and Keen 6 were developed by Id Software for Softdisk.<br>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+Bio Menace is property of Apogee Software. The game engine (Keen 4-6)
+was developed by Id Software and licensed to Apogee Software.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+Dangerous Dave 2 is property of Softdisk ????<br>
+
+
+
+
+
+Shadow Knights is property of ????<br>
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+No penguins were harmed during the production of this software, although some windows were broken in the process.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="8_changelog"></a>8.
+CHANGELOG</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+The changelog to LModKeen 2 and later is provided here for historical
+purposes only, although you might learn about new features coming soon.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dates specified here are in <span style="font-style: italic;">yyyy-mm-dd</span>
+format.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<small><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</small><span style="font-weight: bold;"><a name="8_changelog_linuxport"></a>8.1 LModKeen</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+This is the changelog to <span style="font-style: italic;">LModKeen 2 and 3</span>,&nbsp;by <span style="font-style: italic;">Shadow
+Master</span>:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<big>
+  </big><big>
+    </big><big>
+      </big><big>
+      </big><big>
+    </big>
+  <big>
+  </big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+      <td style="background-color: rgb(204, 204, 204);"><big><big><font style="font-family: monospace;" size="-1"><big><big>2007-05-??: LModKeen 3 alpha 1 (not released)<br>
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Added LModKeen II beta 4 unstable source code.<br>
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Converted C makefiles to C++ ones.<br>
+
+
+
+
+
+      <br>
+
+
+
+
+
+2007-04-20: LModKeen 2 release candidate 1<br>
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Removed unstable code.<br>
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Proper GNU/Linux makefile (GCC).<br>
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Proper Win32 makefile (Mingw32 - GCC x86).<br>
+
+
+
+&nbsp; &nbsp; &nbsp;- Fixed do_output messing up the output to Win32 console.<br>
+
+
+
+&nbsp; &nbsp; &nbsp;- Fixed setcol setting wrong intensity value on Win32 pconio.c section.<br>
+
+
+
+&nbsp; &nbsp; &nbsp;- Updated internal version/license banners with proper text.<br>
+
+
+
+&nbsp; &nbsp; &nbsp;- Now error/help messages display the actual binary name instead of "modkeen".<br>
+
+
+
+&nbsp; &nbsp; &nbsp;- Win32-specific help message added.<br>
+
+
+
+&nbsp; &nbsp; &nbsp;- Renamed normalize_filenames script to prep_names. Added more generic helper scripts.<br>
+&nbsp; &nbsp; &nbsp;- Updated URLs to external utilities in HTML Readme.<br>
+&nbsp; &nbsp; &nbsp;- Updated package uncompressing instruction since it now uses BZip2 tars instead of GZip.<br>
+
+
+
+      <br>
+
+
+
+
+
+
+
+2007-04-05: LModKeen II beta4:<br>
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Renamed linconio.c to pconio.c. Added Win32 console I/O compatibility.<br>
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Renamed linconio.h to pconio.h. Added Win32 console I/O compatibility.<br>
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- More code optimizations.<br>
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Code clean-ups.<br>
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- First Win32 build (MinGW GNU/Linux cross-compiler).<br>
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Added symbols for Bio Menace exe files header lengths.<br>
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Started adding Bio Menace data info.<br>
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Adding code for DOS title screen data extraction/patch file generation.<br>
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Adding code for Scrolling text screen data extraction/patch file generation.<br>
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Added directory layout-independent makefiles for GNU/Linux and Mingw32-on-Linux.<br>
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Read huffman dictionary from external EGADICT.BMx for Bio Menace.<br>
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Added methods that return filenames for EGAHEAD, EGAGRAPH, AUDIOT, AUDIOHED, GAMEMAPS, MAPHEAD,<br>
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp; &nbsp;EGADICT, (exefile), GFXINFOE.<br>
+
+
+
+
+
+
+
+
+
+
+
+2007-04-01:
+LModKeen II beta3:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Lots
+of code optimizations.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Removed unused code.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Added
+console output coloring.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;-&nbsp;Fixed quit() not displaying messages properly under ncurses
+mode.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Fixed
+keen456_import_begin() and keen456_export_begin() bugs that caused
+improper detection<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;&nbsp; of EXE information and
+segment violations.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- UNIX
+switches style compatibility (i.e. --episode=3 is the same as
+-episode=3).<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;-
+Extended --episode parameter to support Dangerous Dave 2 and Bio Menace.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Added
+--debug parameter to add "debug mode" functionality.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;-&nbsp;Renamed keen123_export_finaleimg() to keen123_export_external(). Added
+progress info to procedure.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+&nbsp; &nbsp;- Renamed
+keen123_import_finaleimg() to keen123_import_external(). Added progress
+info to procedure.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;-&nbsp;Marked as stable with Keen 1-3, Keen 4-6 (not Dreams) for
+importing/exporting data.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2007-03-28:
+LModKeen II beta2:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Fixed bug which caused application to always
+display help
+text and ignore command line (GCC bug?).<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Added bmp_unpack for fin2bmp code compatibility.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp;&nbsp; - Fixed bug that caused Lmodkeen to look for
+KEEN7E.EXE
+instead of KDREAMS.EXE.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Extended get_exe_image_size() for future
+compatiblity
+with non-Keen games.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Wrote proper code for KDREAMS.EXE executable
+image size
+calculation.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Adapted EGA header and graphics initialization
+for Keen
+Dreams support.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;- Tested Keen1 and KDreams support (last one is
+still not
+working for export).<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2007-03-27:
+LModKeen II beta1:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+&nbsp;- Various
+miscellaneous
+modifications.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2007-03-23: LModKeen II alpha1:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+&nbsp;- Fixed bug
+involving ncurses calls.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+&nbsp;-&nbsp;Added
+Keen Dreams support based
+on MultiMania's code.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+&nbsp;- Integrated Fin2BMP code on Keen
+1-3 import/export procedure.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2007-03-13: LModKeen I<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+&nbsp;- Initial
+public release by Shadow
+Master</big></big></font></big></big></td>
+
+
+
+
+
+
+
+
+
+
+
+
+      </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+
+
+<a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><span style="font-weight: bold;"><a name="8_changelog_officialbuild"></a>8.2 ModKeen</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+This is the changelog to <span style="font-style: italic;">ModKeen
+2.0.1 (official)</span>, from modkeen.c by <span style="font-style: italic;">Andrew Durdin</span>:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<small> </small><small> </small>
+<big><big>
+  </big></big><big><big>
+    </big></big><big><big>
+      </big></big><big>
+      </big><big>
+    </big>
+  <big>
+  </big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+      <td style="background-color: rgb(204, 204, 204);"><big><big><font style="font-family: monospace;" size="-1"><big><big>
+2004-04-01:
+Version 2.0.1:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Bug-fix
+release. Fixed bug in Keen 1-3 importing where different data types
+were not<br>
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp; &nbsp;paragraph-aligned.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2004-03-14:
+Version 2.0:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Initial public
+release.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+2004-03-13:
+Version 2.0-beta4:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Fixed bug with
+EGAHEAD reading, made extraction automatic, and added more sanity
+checks.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2004-03-08: Version 2.0-beta3:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Fixed bugs
+with too many chunks and with progress displaying.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+2004-03-07:
+Version 2.0-beta2:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Supports
+importing from Keen 4, 5, 6.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+004-03-05:
+Version 2.0-beta1:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Supports
+exporting from Keen 4, 5, 6.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2004-02-22: &nbsp;Version 2.0-alpha:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Began adding
+support for Keen 4.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2002-04-01: Renamed to MODKEEN version 1.0:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Full support
+for editing sprites and bitmaps in all three Keen: Vorticons episodes.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2002-03-27: ModLatch version 1.1:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Added LZ
+routines and Keen 1 support, and BMP I/O routines so it compiles under
+plain DJGPP.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+2002-03-25: ModLatch implicit version 1.0:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp; &nbsp;- Initial
+release, DJGPP + Allegro.</big></big></font></big></big></td>
+
+
+
+
+
+
+
+
+
+
+
+
+      </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><br>
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="9_bugs"></a>9. KNOWN BUGS IN THIS RELEASE<br>
+
+
+
+<br>
+
+
+
+</big>Yeah, there are some bugs in this program. There should be more,
+but here's the list of bugs that I'm currently aware of. If you
+discover a bug that you can reproduce, see Section 6 (Contact
+Information) to know how to report it.<br>
+
+
+
+</big></font></big>
+<ul>
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Win32 build doesn't update progress counter for each operation until counter reaches 100%</big></font></big></li>
+
+
+
+</ul>
+
+
+
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a></big></font></big><br>
+
+
+
+</div>
+
+
+
+<big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>
+
+
+
+
+
+
+
+
+</big></font></big>
+<hr style="width: 100%; height: 2px;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><big style="font-weight: bold;"><a name="10_todo"></a>10. TO-DO LIST</big><br>
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+Although I try to have everything done for each release, my spare time
+or knowledge is not enough for that. As a result, there are still some
+features missing, not tested or not implemented. Here is a list of
+them. They might be implemented in future releases.<br>
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Dangerous Dave 2 and Shadow Knights support as requested by Levellass</big></font></big></li>
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Keen 1-3 sound extraction support<br>
+
+
+
+
+
+    </big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Bio Menace support</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>MacOS X support as requested by Andrew Durdin</big></font></big></li>
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Keen 1-3 text mode order info screen extraction from exe file</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big>Keen 4-6 text mode boot screen extraction from exe file</big></font></big></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align: right;"><big><font style="font-family: Helvetica,Arial,sans-serif;" size="-1"><big><a href="file:///home/omp/.cache/.fr-DLnRkD/lmodkeen2-rel1/readme.htm#toc">&lt;&lt; back to contents</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+</big></font></big>
+<div style="text-align: left;"><br>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<hr style="width: 100%; height: 2px;">
+<div style="text-align: center;"><font style="font-family: Helvetica,Arial,sans-serif;" size="-1">Last
+updated on 2007-04-01, 8:12 PM UTC by Shadow Master</font></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
