@@ -1,4 +1,4 @@
-#Modid definition file for CK SOURCE MOD
+#ModId definition file for CK SOURCE MOD
 
 #Note that we must leave ONE DUMMY chunk at the end
 #Because ModId does not make EGAHEADS properly
