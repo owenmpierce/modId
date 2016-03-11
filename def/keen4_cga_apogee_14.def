@@ -16,12 +16,22 @@ GALAXY
 		TILE16M         2916 1819
 		TILE32          0 4735   
 		TILE32M         0 4735   
-		TEXT    	7 4739
-		DEMO    	5 4746	
 
 		B800TEXT 4735 endgame
 		TERMINATOR 4736 commander
 		TERMINATOR 4737 keen
 		B800TEXT 4738 outofmem
-			
 
+		TEXT    	4739 0000
+		TEXT    	4740 0001
+		TEXT    	4741 0002
+		TEXT    	4742 0003
+		TEXT    	4743 0004
+		TEXT    	4744 0005
+		TEXT    	4745 0006
+
+		DEMO    	4746 0
+		DEMO    	4747 1
+		DEMO    	4748 2
+		DEMO    	4749 3
+		DEMO    	4750 4

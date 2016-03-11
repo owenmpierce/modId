@@ -14,10 +14,20 @@ GALAXY
 		TILE16M         2466 2170
 		TILE32          0 4636 
 		TILE32M         0 4636
-		TEXT    	7 4636
-		DEMO    	3 4643	
 
-		B800TEXT 4644 endgame
-		B800TEXT 4645 outofmem
+		TEXT    	4636 0000
+		TEXT    	4637 0001
+		TEXT    	4638 0002
+		TEXT    	4639 0003
+		TEXT    	4640 0004
+		TEXT    	4641 0005
+		TEXT    	4642 0006
+
+		DEMO    	4643 0
+		DEMO    	4644 1
+		DEMO    	4645 2
+
+		B800TEXT 4646 endgame
+		B800TEXT 4647 outofmem
 			
 

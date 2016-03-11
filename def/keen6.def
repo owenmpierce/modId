@@ -15,12 +15,16 @@ GALAXY
 		TILE16M         2736 2814
 		TILE32          0 5550   
 		TILE32M         0 5550   
-		DEMO    	5 5555	
-		TEXT    	1 5550
+
+		TEXT		5550 0000
+
 		B800TEXT 5551 endgame
 		TERMINATOR 5552 commander
 		TERMINATOR 5553 keen
 		B800TEXT 5554 outofmem
-			
 
-
+		DEMO    	5555 0
+		DEMO    	5556 1
+		DEMO    	5557 2
+		DEMO    	5558 3
+		DEMO    	5559 4

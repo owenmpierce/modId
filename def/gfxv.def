@@ -18,8 +18,21 @@ GALAXY
                 TILE16M         2916 1510
                 TILE32          0 4426   
                 TILE32M         0 4426   
-                TEXT            7 4426
-                DEMO            6 4433  
+
+		TEXT    	4426 0000
+		TEXT    	4427 0001
+		TEXT    	4428 0002
+		TEXT    	4429 0003
+		TEXT    	4430 0004
+		TEXT    	4431 0005
+		TEXT    	4432 0006
+
+		DEMO    	4433 0
+		DEMO    	4434 1
+		DEMO    	4435 2
+		DEMO    	4436 3
+		DEMO    	4437 4
+		DEMO    	4438 5
 
                 B800TEXT 4439 endgame
                 TERMINATOR 4440 commander

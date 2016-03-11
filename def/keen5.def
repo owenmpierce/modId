@@ -15,10 +15,23 @@ GALAXY
 		TILE16M         2952 1962
 		TILE32          0 4914   
 		TILE32M         0 4914   
-		DEMO    	5 4926	
-		TEXT    	7 4914
+
+		TEXT    	4914 0000
+		TEXT    	4915 0001
+		TEXT    	4916 0002
+		TEXT    	4917 0003
+		TEXT    	4918 0004
+		TEXT    	4919 0005
+		TEXT    	4920 0006
+
 		B800TEXT	4921 endgame
 		TERMINATOR	4922 commander
 		TERMINATOR	4923 keen
 		B800TEXT	4924 outofmem
 		MISC		4925 explosion
+
+		DEMO    	4926 0
+		DEMO    	4927 1
+		DEMO    	4928 2
+		DEMO    	4929 3
+		DEMO    	4930 4

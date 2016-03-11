@@ -48,6 +48,8 @@ void parse_k456_misc_ascent(void **);
 void parse_k456_misc_descent(void **);
 void parse_k456_b800_descent(void **);
 void parse_k456_terminator_descent(void **);
+void parse_k456_demo_descent(void **);
+void parse_k456_text_descent(void **);
 
 typedef struct {
 	uint16_t Width;
@@ -103,9 +105,7 @@ typedef struct {
 	unsigned int Num16MaskedTiles, Index16MaskedTiles;
 	unsigned int Num32Tiles, Index32Tiles;
 	unsigned int Num32MaskedTiles, Index32MaskedTiles;
-	unsigned int NumMisc, IndexMisc; /* Includes ANSI images */
-	unsigned int NumTexts, IndexTexts;
-	unsigned int NumDemos, IndexDemos;
+	unsigned int NumMisc, IndexMisc; /* Includes demos, texts and ANSI images */
 } EpisodeInfoStruct;
 
 /* Stores filenames of misc chunks (e.g. terminator text, b800 text, etc) */
@@ -233,13 +233,13 @@ static ValueNode CV_TILE32M[] = {
 };
 
 static ValueNode CV_TEXT[] = {
-	VALUENODE("%i", EpisodeInfoStruct, NumTexts),
-	VALUENODE("%i", EpisodeInfoStruct, IndexTexts),
+	VALUENODE("%i", MiscInfoList, Chunk),
+	VALUENODE("%s", MiscInfoList, File),
 	ENDVALUE
 };
 static ValueNode CV_DEMO[] = {
-	VALUENODE("%i", EpisodeInfoStruct, NumDemos),
-	VALUENODE("%i", EpisodeInfoStruct, IndexDemos),
+	VALUENODE("%i", MiscInfoList, Chunk),
+	VALUENODE("%s", MiscInfoList, File),
 	ENDVALUE
 };
 
@@ -281,8 +281,8 @@ static CommandNode SC_CHUNKS[] = {
 	{ "TILE16M", NULL, NULL, CV_TILE16M, NULL},
 	{ "TILE32", NULL, NULL, CV_TILE32, NULL},
 	{ "TILE32M", NULL, NULL, CV_TILE32M, NULL},
-	{ "TEXT", NULL, NULL, CV_TEXT, NULL},
-	{ "DEMO", NULL, NULL, CV_DEMO, NULL},
+	{ "TEXT", parse_k456_text_descent, parse_k456_misc_ascent, CV_TEXT, NULL},
+	{ "DEMO", parse_k456_demo_descent, parse_k456_misc_ascent, CV_DEMO, NULL},
 	{ "B800TEXT", parse_k456_b800_descent, parse_k456_misc_ascent, CV_B800TEXT, NULL},
 	{ "TERMINATOR", parse_k456_terminator_descent, parse_k456_misc_ascent, CV_TERMINATOR, NULL},
 	{ "MISC", parse_k456_misc_descent, parse_k456_misc_ascent, CV_MISC, NULL},
@@ -1319,28 +1319,26 @@ void k456_export_sprites() {
 void k456_export_texts() {
 	char filename[PATH_MAX];
 	FILE *f;
-	int i;
+	MiscInfoList *mp;
 
 	if (!ExportInitialised)
 		quit("Trying to export texts before initialisation!");
 
-	if (EpisodeInfo.NumTexts == 0)
-		return;
-
 	/* Export all the texts */
 	do_output("Exporting texts: ");
 
-	for (i = 0; i < EpisodeInfo.NumTexts; i++) {
-		/* Show that something is happening */
-		showprogress((i * 100) / EpisodeInfo.NumTexts);
+	/* Search misc chunk list for a text chunk */
+	for (mp = MiscInfos; mp; mp = mp->next) {
+		if (strcmp(mp->Type, "TEXT"))
+			continue;
 
-		if (EgaGraph[EpisodeInfo.IndexTexts + i].data) {
+		if (EgaGraph[mp->Chunk].data) {
 			/* Create the text file */
-			sprintf(filename, "%s/%s_txt_%04d.txt", Switches->OutputPath, EpisodeInfo.GameExt, i);
+			sprintf(filename, "%s/%s_txt_%s.txt", Switches->OutputPath, EpisodeInfo.GameExt, mp->File);
 			f = openfile(filename, "wb", Switches->Backup);
 			if (!f)
 				quit("Can't open text file %s!", filename);
-			fwrite(EgaGraph[EpisodeInfo.IndexTexts + i].data, EgaGraph[EpisodeInfo.IndexTexts + i].len, 1, f);
+			fwrite(EgaGraph[mp->Chunk].data, EgaGraph[mp->Chunk].len, 1, f);
 			fclose(f);
 		}
 	}
@@ -1382,28 +1380,26 @@ void k456_export_misc() {
 void k456_export_demos() {
 	char filename[PATH_MAX];
 	FILE *f;
-	int i;
+	MiscInfoList *mp;
 
 	if (!ExportInitialised)
 		quit("Trying to export demos before initialisation!");
 
-	if (EpisodeInfo.NumDemos == 0)
-		return;
-
 	/* Export all the demos */
 	do_output("Exporting demos: ");
 
-	for (i = 0; i < EpisodeInfo.NumDemos; i++) {
-		/* Show that something is happening */
-		showprogress((i * 100) / EpisodeInfo.NumDemos);
+	/* Search misc chunk list for a demo chunk */
+	for (mp = MiscInfos; mp; mp = mp->next) {
+		if (strcmp(mp->Type, "DEMO"))
+			continue;
 
-		if (EgaGraph[EpisodeInfo.IndexDemos + i].data) {
+		if (EgaGraph[mp->Chunk].data) {
 			/* Create the demo file */
-			sprintf(filename, "%s/demo%d.%s", Switches->OutputPath, i, EpisodeInfo.GameExt);
+			sprintf(filename, "%s/demo%s.%s", Switches->OutputPath, mp->File, EpisodeInfo.GameExt);
 			f = openfile(filename, "wb", Switches->Backup);
 			if (!f)
 				quit("Can't open file %s!", filename);
-			fwrite(EgaGraph[EpisodeInfo.IndexDemos + i].data, EgaGraph[EpisodeInfo.IndexDemos + i].len, 1, f);
+			fwrite(EgaGraph[mp->Chunk].data, EgaGraph[mp->Chunk].len, 1, f);
 			fclose(f);
 		}
 	}
@@ -2650,7 +2646,7 @@ void k456_import_8_masked_tiles() {
 
 void k456_import_texts() {
 	char filename[PATH_MAX];
-	int i;
+	MiscInfoList *mp;
 	FILE *f;
 	unsigned long len;
 	uint8_t *pointer;
@@ -2658,18 +2654,16 @@ void k456_import_texts() {
 	if (!ImportInitialised)
 		quit("Trying to import texts before initialisation!");
 
-	if (EpisodeInfo.NumTexts == 0)
-		return;
-
 	/* Import all the texts */
 	do_output("Importing texts chunks: ");
 
-	for (i = 0; i < EpisodeInfo.NumTexts; i++) {
-		/* Show that something is happening */
-		showprogress((i * 100) / EpisodeInfo.NumTexts);
+	for (mp = MiscInfos; mp; mp = mp->next) {
 
-		/* Open the demo file */
-		sprintf(filename, "%s/%s_txt_%04d.txt", Switches->OutputPath, EpisodeInfo.GameExt, i);
+		if (strcmp(mp->Type, "TEXT"))
+			continue;
+
+		/* Open the text file */
+		sprintf(filename, "%s/%s_txt_%s.txt", Switches->OutputPath, EpisodeInfo.GameExt, mp->File);
 		f = openfile(filename, "rb", Switches->Backup);
 		if (!f)
 			quit("Can't open %s!", filename);
@@ -2683,8 +2677,8 @@ void k456_import_texts() {
 		pointer = malloc(len);
 		if (!pointer)
 			quit("Not enough memory to import misc chunks!");
-		EgaGraph[EpisodeInfo.IndexTexts + i].len = len;
-		EgaGraph[EpisodeInfo.IndexTexts + i].data = pointer;
+		EgaGraph[mp->Chunk].len = len;
+		EgaGraph[mp->Chunk].data = pointer;
 
 		/* Read the data and close the file */
 		fread(pointer, len, 1, f);
@@ -2715,7 +2709,7 @@ void k456_import_misc() {
 		if (strcmp(mp->Type, "MISC"))
 			continue;
 
-		/* Open the demo file */
+		/* Open the misc file */
 		sprintf(filename, "%s/%s_misc_%s.bin", Switches->OutputPath, EpisodeInfo.GameExt, mp->File);
 		f = openfile(filename, "rb", Switches->Backup);
 		if (!f)
@@ -2743,7 +2737,7 @@ void k456_import_misc() {
 
 void k456_import_demos() {
 	char filename[PATH_MAX];
-	int i;
+	MiscInfoList *mp;
 	FILE *f;
 	unsigned long len;
 	uint8_t *pointer;
@@ -2751,18 +2745,16 @@ void k456_import_demos() {
 	if (!ImportInitialised)
 		quit("Trying to import demos before initialisation!");
 
-	if (EpisodeInfo.NumDemos == 0)
-		return;
-
 	/* Import all the demos */
 	do_output("Importing demos: ");
 
-	for (i = 0; i < EpisodeInfo.NumDemos; i++) {
-		/* Show that something is happening */
-		showprogress((i * 100) / EpisodeInfo.NumDemos);
+	for (mp = MiscInfos; mp; mp = mp->next) {
+
+		if (strcmp(mp->Type, "DEMO"))
+			continue;
 
 		/* Open the demo file */
-		sprintf(filename, "%s/demo%d.%s", Switches->OutputPath, i, EpisodeInfo.GameExt);
+		sprintf(filename, "%s/demo%s.%s", Switches->OutputPath, mp->File, EpisodeInfo.GameExt);
 		f = openfile(filename, "rb", Switches->Backup);
 		if (!f)
 			quit("Can't open %s!", filename);
@@ -2776,8 +2768,8 @@ void k456_import_demos() {
 		pointer = malloc(len);
 		if (!pointer)
 			quit("Not enough memory to import demos!");
-		EgaGraph[EpisodeInfo.IndexDemos + i].len = len;
-		EgaGraph[EpisodeInfo.IndexDemos + i].data = pointer;
+		EgaGraph[mp->Chunk].len = len;
+		EgaGraph[mp->Chunk].data = pointer;
 
 		/* Read the data and close the file */
 		fread(pointer, len, 1, f);
@@ -3095,9 +3087,9 @@ void k456_import_terminator_text() {
 	if (!ImportInitialised)
 		quit("Trying to export terminator text before initialisation!");
 
+	/* Import all the terminator chunks */
 	do_output("Importing terminator text: ");
 
-	/* Open the bitmap file */
 	for (mp = MiscInfos; mp; mp = mp->next) {
 
 		if (strcmp(mp->Type, "TERMINATOR"))
@@ -3253,4 +3245,14 @@ void parse_k456_b800_descent(void **buf) {
 void parse_k456_terminator_descent(void **buf) {
 	parse_k456_misc_descent(buf);
 	strcpy(((MiscInfoList*) * buf)->Type, "TERMINATOR");
+}
+
+void parse_k456_demo_descent(void **buf) {
+	parse_k456_misc_descent(buf);
+	strcpy(((MiscInfoList*) * buf)->Type, "DEMO");
+}
+
+void parse_k456_text_descent(void **buf) {
+	parse_k456_misc_descent(buf);
+	strcpy(((MiscInfoList*) * buf)->Type, "TEXT");
 }

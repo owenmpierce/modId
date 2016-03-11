@@ -14,8 +14,17 @@ GALAXY
 		TILE16M         2682 1537
 		TILE32          0 4219
 		TILE32M         0 4219
-		TEXT    	6 4219
-		DEMO    	3 4225	
+
+		TEXT    	4219 0000
+		TEXT    	4220 0001
+		TEXT    	4221 0002
+		TEXT    	4222 0003
+		TEXT    	4223 0004
+		TEXT    	4224 0005
+
+		DEMO    	4225 0
+		DEMO    	4226 1
+		DEMO    	4227 2
 
 		B800TEXT 4228 endgame
 		B800TEXT 4229 outofmem
