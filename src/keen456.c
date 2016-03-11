@@ -1,6 +1,8 @@
 /* KEEN456.C - Keen 4, 5, and 6 import and export routines.
  **
- ** Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
+ ** Copyright (c)2016 by Owen Pierce
+ ** Thanks to NY00123 for CGA import and export routines
+ ** Based on LModkeen 2 Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
  ** Based on ModKeen 2.0.1 Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)
  ** 
  ** This software is provided 'as-is', without any express or implied warranty.
@@ -758,7 +760,7 @@ void k456_export_masked_bitmaps() {
 				if (Switches->SeparateMask) {
 					/* Draw the color planes and mask separately */
 					mbmp = bmp256_create(planewidth * 2, BmpMaskedHead[i].Height, 4);
-					bmp256_blit(planes[totalnumofplanes-1], 0, 0, mbmp, planewidth * 8, 0, planewidth * 8, BmpMaskedHead[i].Height);
+					bmp256_blit(planes[totalnumofplanes-1], 0, 0, mbmp, planewidth, 0, planewidth, BmpMaskedHead[i].Height);
 					bmp = bmp256_merge_ex(planes, totalnumofplanes-1, 4);
 					bmp256_blit(bmp, 0, 0, mbmp, 0, 0, planewidth, BmpMaskedHead[i].Height);
 					bmp256_free(bmp);
