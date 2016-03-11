@@ -1,0 +1,35 @@
+#ModId definition file Spear of Destiny, multiple non-demo releases
+GALAXY 
+	GAMEEXT sod
+	GRAPHICSFORMAT VGA
+	GRSTARTS 3
+	CHUNKS 169
+		FONT		2 1		#num, start
+		FONTM		0 3
+		PICS		147 3 0      #num, start, tablestart
+		PICM		0 150 0   
+		SPRITES		0 150 0 
+		TILE8		35 150 # The EXEs have a count of 72 defined
+		TILE8M		0 151
+		TILE16		0 151
+		TILE16M		0 151
+		TILE32		0 151
+		TILE32M		0 151
+		B800TEXT	151 orderscreen
+		B800TEXT	152 errorscreen
+		MISC		153 titlepalette
+		MISC		154 end1palette
+		MISC		155 end2palette
+		MISC		156 end3palette
+		MISC		157 end4palette
+		MISC		158 end5palette
+		MISC		159 end6palette
+		MISC		160 end7palette
+		MISC		161 end8palette
+		MISC		162 end9palette
+		MISC		163 idguyspalette
+		DEMO		164 0
+		DEMO		165 1
+		DEMO		166 2
+		DEMO		167 3
+		TEXT		168 endart1

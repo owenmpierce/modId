@@ -1,4 +1,4 @@
-#ModId definition file for Wolf 1
+#ModId definition file for Wolfenstein 3D, 1-episode Apogee release, v1.0
 GALAXY 
 	GAMEEXT wl1
 	GRAPHICSFORMAT VGA
@@ -9,7 +9,7 @@ GALAXY
 		PICS            136 3 0      #num, start, tablestart
 		PICM            0 139 0   
 		SPRITES         0 139 0 
-		TILE8           72 139  
+		TILE8           35 139 # The EXE has a count of 72 defined
 		TILE8M          0 140   
 		TILE16          0 140 
 		TILE16M         0 140
@@ -17,5 +17,9 @@ GALAXY
 		TILE32M         0 140
 		B800TEXT	140 orderscreen
 		B800TEXT	141 errorscreen
-		TEXT		2 142   
-		DEMO		4 144
+		TEXT		142 helpart
+		TEXT		143 endart1
+		DEMO		144 0
+		DEMO		145 1
+		DEMO		146 2
+		DEMO		147 3

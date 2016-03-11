@@ -1,0 +1,21 @@
+#ModId definition file Spear of Destiny, FormGen demo v1.0
+GALAXY 
+	GAMEEXT sdm
+	GRAPHICSFORMAT VGA
+	GRSTARTS 3
+	CHUNKS 133
+		FONT		2 1		#num, start
+		FONTM		0 3
+		PICS		125 3 0      #num, start, tablestart
+		PICM		0 128 0   
+		SPRITES		0 128 0 
+		TILE8		35 128 # The EXE has a count of 72 defined
+		TILE8M		0 129
+		TILE16		0 129
+		TILE16M		0 129
+		TILE32		0 129
+		TILE32M		0 129
+		B800TEXT	129 orderscreen
+		B800TEXT	130 errorscreen
+		MISC		131 titlepalette
+		DEMO		132 0

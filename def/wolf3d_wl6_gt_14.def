@@ -1,0 +1,30 @@
+#ModId definition file for Wolfenstein 3D, GT + Id + Activision releases, v1.4
+GALAXY 
+	GAMEEXT wl6
+	GRAPHICSFORMAT VGA
+	GRSTARTS 3
+	CHUNKS 149
+		FONT		2 1		#num, start
+		FONTM		0 3
+		PICS		132 3 0      #num, start, tablestart
+		PICM		0 135 0   
+		SPRITES		0 135 0 
+		TILE8		35 135 # The EXE has a count of 72 defined
+		TILE8M		0 136
+		TILE16		0 136
+		TILE16M		0 136
+		TILE32		0 136
+		TILE32M		0 136
+		B800TEXT	136 orderscreen
+		B800TEXT	137 errorscreen
+		TEXT		138 helpart
+		DEMO		139 0
+		DEMO		140 1
+		DEMO		141 2
+		DEMO		142 3
+		TEXT		143 endart1
+		TEXT		144 endart2
+		TEXT		145 endart3
+		TEXT		146 endart4
+		TEXT		147 endart5
+		TEXT		148 endart6

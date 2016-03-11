@@ -1,0 +1,25 @@
+#ModId definition file for Wolfenstein 3D, 1-episode Apogee release, v1.4(g)
+GALAXY 
+	GAMEEXT wl1
+	GRAPHICSFORMAT VGA
+	GRSTARTS 3
+	CHUNKS 156 # The original EXE actually has NUMCHUNKS defined as 161 
+		FONT		2 1		#num, start
+		FONTM		0 3
+		PICS		144 3 0      #num, start, tablestart
+		PICM		0 147 0   
+		SPRITES		0 147 0 
+		TILE8		35 147 # The EXE has a count of 72 defined
+		TILE8M		0 148
+		TILE16		0 148
+		TILE16M		0 148
+		TILE32		0 148
+		TILE32M		0 148
+		B800TEXT	148 orderscreen
+		B800TEXT	149 errorscreen
+		TEXT		150 helpart
+		DEMO		151 0
+		DEMO		152 1
+		DEMO		153 2
+		DEMO		154 3
+		TEXT		155 endart1 # The EXE has definitions for 6-ep
