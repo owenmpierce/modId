@@ -1,6 +1,7 @@
 /* KEEN123.C - Keen 1, 2, and 3 import and export functions.
  **
- ** Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
+ ** Copyright (c)2016 by Owen Pierce
+ ** Based on LModkeen 2 Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
  ** Based on ModKeen 2.0.1 Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)
  **
  ** Parts of this file based on fin2bmp.c (FIN2BMP original source code

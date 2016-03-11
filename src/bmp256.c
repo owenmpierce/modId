@@ -1,5 +1,5 @@
 /* BMP256.C - 1-bit, 4-bit, and 8-bit BMP manipulation routines.
- ** Adapted from BMP16.C by Lemm, 2011
+ ** Adapted from BMP16.C by Lemm, 2011 - 2016
  **
  ** Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)
  ** This software is provided 'as-is', without any express or implied warranty.

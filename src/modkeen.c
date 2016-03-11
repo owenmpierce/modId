@@ -1,4 +1,8 @@
-/* MODKEEN.C - source for a tile importer/exporter for Keen 1 - 6.
+/* modkeen.c - source for a graphics importer/exporter for 16 bit ID software games
+ ** 
+ ** Copyright (c)2016 by Owen Pierce, based on LModkeen
+ ** Thanks to NY00123 for assistance
+ **
  ** Greetings and thanks from Andrew Durdin to Anders Gavare and 
  ** Daniel Olson for their assistance.
  **
@@ -36,20 +40,20 @@
 
 
 static char* txt_signature1 =
-        "LMODKEEN 2 release 1 - Windows/Linux ModKeen port, Copyright (c) 2007 by Shadow Master\n";
+"LMODKEEN 2 release 1 - Windows/Linux ModKeen port, Copyright (c) 2007 by Shadow Master\n";
 static char* txt_signature2 =
-        "Based on ModKeen 2.0.1 source code, Copyright (c) 2002-2004 Andrew Durdin\n"
-        "Based on Fin2BMP source code, Copyright (c) 2002 Andrew Durdin\n"
-        "\n";
+"Based on ModKeen 2.0.1 source code, Copyright (c) 2002-2004 Andrew Durdin\n"
+"Based on Fin2BMP source code, Copyright (c) 2002 Andrew Durdin\n"
+"\n";
 
 typedef enum {
-    engine_None,
-    engine_Vorticons,
-    engine_Galaxy,
+	engine_None,
+	engine_Vorticons,
+	engine_Galaxy,
 } EngineType;
 
 typedef struct {
-    EngineType Engine;
+	EngineType Engine;
 } EpisodeInfoStruct;
 
 
@@ -70,121 +74,121 @@ void read_vorticons_definition(void **);
 
 /* Command Tree Root */
 ValueNode CV_MAIN[] = {
-    ENDVALUE
+	ENDVALUE
 };
 
 CommandNode SC_MAIN[] = {
-    COMMANDNODE(GALAXY, read_galaxy_definition, NULL),
-    COMMANDNODE(VORTICONS, read_vorticons_definition, NULL),
-    ENDCOMMAND
+	COMMANDNODE(GALAXY, read_galaxy_definition, NULL),
+	COMMANDNODE(VORTICONS, read_vorticons_definition, NULL),
+	ENDCOMMAND
 };
 
 CommandNode CommandRoot[] = {
-    COMMANDNODE(MAIN, NULL, NULL),
-    ENDCOMMAND
+	COMMANDNODE(MAIN, NULL, NULL),
+	ENDCOMMAND
 };
 
 
 // Local function prototypes
 
 void read_vorticons_definition(void **buf) {
-    if (EpisodeInfo.Engine != engine_None)
-        quit("Only one engine type can be specified!\n");
+	if (EpisodeInfo.Engine != engine_None)
+		quit("Only one engine type can be specified!\n");
 
-    *buf = VorticonsEpisodeInfo;
-    EpisodeInfo.Engine = engine_Vorticons;
+	*buf = VorticonsEpisodeInfo;
+	EpisodeInfo.Engine = engine_Vorticons;
 }
 
 void read_galaxy_definition(void **buf) {
-    if (EpisodeInfo.Engine != engine_None)
-        quit("Only one engine type can be specified!\n");
-    DefinitionBufferPtr = GalaxyEpisodeInfo;
-    EpisodeInfo.Engine = engine_Galaxy;
+	if (EpisodeInfo.Engine != engine_None)
+		quit("Only one engine type can be specified!\n");
+	DefinitionBufferPtr = GalaxyEpisodeInfo;
+	EpisodeInfo.Engine = engine_Galaxy;
 }
 
 int main(int argc, char *argv[]) {
-    SwitchStruct *switches;
+	SwitchStruct *switches;
 
-    /* Display the signature */
-    //fprintf(stdout, txt_signature1);
-    //fprintf(stdout, txt_signature2);
+	/* Display the signature */
+	//fprintf(stdout, txt_signature1);
+	//fprintf(stdout, txt_signature2);
 
-    /* Parse first, ask questions later :) */
-    /* Get the options */
-    switches = getswitches(argc, argv);
+	/* Parse first, ask questions later :) */
+	/* Get the options */
+	switches = getswitches(argc, argv);
 
-    /* Setup terminal now */
-    if (pconio_init()) {
-        quit("CONIO: failed to setup terminal.");
-    }
+	/* Setup terminal now */
+	if (pconio_init()) {
+		quit("CONIO: failed to setup terminal.");
+	}
 
-    /* Display the signature (again)*/
-    bold;
-    do_output(txt_signature1);
-    unbold;
-    do_output(txt_signature2);
+	/* Display the signature (again)*/
+	bold;
+	do_output(txt_signature1);
+	unbold;
+	do_output(txt_signature2);
 
-    if (switches->Export) {
-        /* Set exporting palette */
-        if (strcmp("", switches->PalettePath)) {
-            if (!bmp256_setpalette(switches->PalettePath))
-                quit("Could not open palette bitmap %s\n",
-                    switches->PalettePath);
-        }
+	if (switches->Export) {
+		/* Set exporting palette */
+		if (strcmp("", switches->PalettePath)) {
+			if (!bmp256_setpalette(switches->PalettePath))
+				quit("Could not open palette bitmap %s\n",
+						switches->PalettePath);
+		}
 
-        /* Export all data */
-        if (switches->EpisodeDefPath) {
-            if (parse_definition_file(switches->EpisodeDefPath,
-                    (void **) &DefinitionBufferPtr, CommandRoot)) {
-                switch (EpisodeInfo.Engine) {
-                    case engine_Vorticons:
-                        do_k123_export(switches);
-                        break;
+		/* Export all data */
+		if (switches->EpisodeDefPath) {
+			if (parse_definition_file(switches->EpisodeDefPath,
+						(void **) &DefinitionBufferPtr, CommandRoot)) {
+				switch (EpisodeInfo.Engine) {
+					case engine_Vorticons:
+						do_k123_export(switches);
+						break;
 
-                    case engine_Galaxy:
-                        do_k456_export(switches);
-                        break;
+					case engine_Galaxy:
+						do_k456_export(switches);
+						break;
 
-                    default:
-                    case engine_None:
-                        quit("Unknown engine declared in episode definition file!");
-                        break;
-                }
-            } else {
-                quit("Episode definition file %s is improperly formatted.\n",
-                        switches->EpisodeDefPath);
-            }
+					default:
+					case engine_None:
+						quit("Unknown engine declared in episode definition file!");
+						break;
+				}
+			} else {
+				quit("Episode definition file %s is improperly formatted.\n",
+						switches->EpisodeDefPath);
+			}
 
-        }
-    } else if (switches->Import) {
-        /* Import all data */
-        if (switches->EpisodeDefPath) {
-            if (parse_definition_file(switches->EpisodeDefPath,
-                    (void **) &DefinitionBufferPtr, CommandRoot)) {
-                switch (EpisodeInfo.Engine) {
-                    case engine_Vorticons:
-                        do_k123_import(switches);
-                        break;
+		}
+	} else if (switches->Import) {
+		/* Import all data */
+		if (switches->EpisodeDefPath) {
+			if (parse_definition_file(switches->EpisodeDefPath,
+						(void **) &DefinitionBufferPtr, CommandRoot)) {
+				switch (EpisodeInfo.Engine) {
+					case engine_Vorticons:
+						do_k123_import(switches);
+						break;
 
-                    case engine_Galaxy:
-                        do_k456_import(switches);
-                        break;
+					case engine_Galaxy:
+						do_k456_import(switches);
+						break;
 
-                    default:
-                    case engine_None:
-                        quit("Invalid engine defined in definition file %s!",
-                                switches->EpisodeDefPath);
-                        break;
-                }
-            } else {
-                quit("Definition file %s improperly formatted.\n",
-                        switches->EpisodeDefPath);
-            }
-        }
-    }
+					default:
+					case engine_None:
+						quit("Invalid engine defined in definition file %s!",
+								switches->EpisodeDefPath);
+						break;
+				}
+			} else {
+				quit("Definition file %s improperly formatted.\n",
+						switches->EpisodeDefPath);
+			}
+		}
+	}
 
-    do_output("Done!\n\n");
+	do_output("Done!\n\n");
 
-    /* Quit, indicating success */
-    return 0;
+	/* Quit, indicating success */
+	return 0;
 }

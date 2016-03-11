@@ -1,6 +1,7 @@
 /* SWITCHES.C - Switch-handling routines.
 **
-** Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
+ ** Copyright (c)2016 by Owen Pierce
+ ** Based on LModkeen 2 Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
 ** Based on ModKeen 2.0.1 Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)
 ** 
 ** This software is provided 'as-is', without any express or implied warranty.
@@ -91,7 +92,7 @@ SwitchStruct *getswitches(int argc, char *argv[])
 				continue;
 			}
 		}
-		else if(stricmp(option, "keendir") == 0)
+		else if(stricmp(option, "gamedir") == 0)
 		{
 			if(!value)
 				quit("No directory for Keen files given!");
@@ -218,7 +219,7 @@ static void showswitches (void)
 			"    -episode=FILEPATH   [Path to the episode definition file (required)]\n"
 			"    -export             [Export data from Keen to BMP files]\n"
 			"    -import             [Import data from BMP files to Keen]\n"
-			"    -keendir=DIRECTORY  [Keen files are in DIRECTORY (defaults to current)]\n"
+			"    -gamedir=DIRECTORY  [Keen files are in DIRECTORY (defaults to current)]\n"
 			"    -bmpdir=DIRECTORY   [BMP files are in DIRECTORY (defaults to current)]\n"
 			"    -palette=FILEPATH   [Set BMP palette for export (defaults to EGA colors)]\n"
 			"    -16color            [Masked BMP files have 16 colors, separate masks]\n"
