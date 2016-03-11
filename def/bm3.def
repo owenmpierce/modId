@@ -15,12 +15,12 @@ GALAXY
 		TILE32          0 4219
 		TILE32M         0 4219
 
-		TEXT    	4219 0000
-		TEXT    	4220 0001
-		TEXT    	4221 0002
-		TEXT    	4222 0003
-		TEXT    	4223 0004
-		TEXT    	4224 0005
+		TEXT    	4219 helpart1
+		TEXT    	4220 helpart2
+		TEXT    	4221 endart
+		TEXT    	4222 helpart3
+		TEXT    	4223 helpart4
+		TEXT    	4224 helpart5
 
 		DEMO    	4225 0
 		DEMO    	4226 1

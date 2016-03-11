@@ -16,7 +16,7 @@ GALAXY
 		TILE32          0 5550   
 		TILE32M         0 5550   
 
-		TEXT		5550 0000
+		TEXT		5550 endart
 
 		B800TEXT 5551 endgame
 		TERMINATOR 5552 commander

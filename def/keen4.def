@@ -21,13 +21,13 @@ GALAXY
 		TERMINATOR 4737 keen
 		B800TEXT 4738 outofmem
 
-		TEXT    	4739 0000
-		TEXT    	4740 0001
-		TEXT    	4741 0002
-		TEXT    	4742 0003
-		TEXT    	4743 0004
-		TEXT    	4744 0005
-		TEXT    	4745 0006
+		TEXT    	4739 helpart1
+		TEXT    	4740 helpart2
+		TEXT    	4741 helpart3
+		TEXT    	4742 helpart4
+		TEXT    	4743 endart
+		TEXT    	4744 demoart
+		TEXT    	4745 helpart5
 
 		DEMO    	4746 0
 		DEMO    	4747 1

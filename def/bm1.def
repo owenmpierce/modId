@@ -16,13 +16,13 @@ GALAXY
 		TILE32          0 4607 
 		TILE32M         0 4607
 
-		TEXT    	4607 0000
-		TEXT    	4608 0001
-		TEXT    	4609 0002
-		TEXT    	4610 0003
-		TEXT    	4611 0004
-		TEXT    	4612 0005
-		TEXT    	4613 0006
+		TEXT    	4607 helpart1
+		TEXT    	4608 helpart2
+		TEXT    	4609 endart
+		TEXT    	4610 helpart3
+		TEXT    	4611 helpart4
+		TEXT    	4612 helpart5
+		TEXT    	4613 nagart
 
 		DEMO    	4614 0
 		DEMO    	4615 1

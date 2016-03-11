@@ -16,13 +16,13 @@ GALAXY
 		TILE32          0 4914   
 		TILE32M         0 4914   
 
-		TEXT    	4914 0000
-		TEXT    	4915 0001
-		TEXT    	4916 0002
-		TEXT    	4917 0003
-		TEXT    	4918 0004
-		TEXT    	4919 0005
-		TEXT    	4920 0006
+		TEXT    	4914 helpart1
+		TEXT    	4915 helpart2
+		TEXT    	4916 helpart3
+		TEXT    	4917 helpart4
+		TEXT    	4918 endart1
+		TEXT    	4919 endart2
+		TEXT    	4920 helpart5
 
 		B800TEXT	4921 endgame
 		TERMINATOR	4922 commander
