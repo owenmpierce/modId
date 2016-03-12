@@ -105,7 +105,6 @@ typedef struct {
 	unsigned int Num16MaskedTiles, Index16MaskedTiles;
 	unsigned int Num32Tiles, Index32Tiles;
 	unsigned int Num32MaskedTiles, Index32MaskedTiles;
-	unsigned int NumMisc, IndexMisc; /* Includes demos, texts and ANSI images */
 } EpisodeInfoStruct;
 
 /* Stores filenames of misc chunks (e.g. terminator text, b800 text, etc) */
@@ -1353,9 +1352,6 @@ void k456_export_misc() {
 
 	if (!ExportInitialised)
 		quit("Trying to export misc chunks before initialisation!");
-
-	if (EpisodeInfo.NumMisc == 0)
-		return;
 
 	do_output("Exporting misc chunks: ");
 
@@ -2697,9 +2693,6 @@ void k456_import_misc() {
 
 	if (!ImportInitialised)
 		quit("Trying to import misc chunks before initialisation!");
-
-	if (EpisodeInfo.NumMisc == 0)
-		return;
 
 	/* Import all the misc chunks */
 	do_output("Importing misc chunks: ");
