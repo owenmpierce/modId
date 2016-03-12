@@ -120,7 +120,7 @@ void huff_setup_compression()
 }
 
 /* Compress data using huffman dictionary from input buffer into output buffer */
-unsigned long huff_compress(unsigned char *pin, unsigned char *pout, unsigned long inlen, unsigned long outlen)
+unsigned long huff_compress(unsigned char *pin, unsigned char *pout, unsigned long inlen, unsigned long outlen, int igrabhufftrailmode)
 {
 	unsigned long outcnt;
 	unsigned long incnt;
@@ -160,9 +160,14 @@ unsigned long huff_compress(unsigned char *pin, unsigned char *pout, unsigned lo
 		} while(numbitsin < numbits && outcnt < outlen);
 	} while(incnt < inlen && outcnt < outlen);
    
-	/* Output any remaining bits */
-	if(numbitsout > 0 && outcnt < outlen)
-	{
+	/* Output any remaining bits, or even just an additional    */
+	/* trailing zero byte, based on value of igrabhufftrailmode */
+	/* (used for emulating a few variants of an IGRAB quirk)    */
+	if (((numbitsout > 0) ||
+	     (igrabhufftrailmode == 1) ||
+	     ((igrabhufftrailmode == 2) && (inlen < 60000))
+	    ) && (outcnt < outlen)
+	) {
 		cout >>= (8 - numbitsout);
 		*(pout++) = cout;
 		outcnt++;

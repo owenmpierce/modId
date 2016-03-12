@@ -47,7 +47,7 @@ ModId is a tool for modifying games that were created with the
 command-line utility that will export graphics from these games into BMP files,
 and import those BMPs back into the graphics archives used by these games.
 Such games include Commander Keen, Bio Menace, Catacombs 3D, Rescue Rover,
-Wolf3D (VGAGRAPH only), Dangerous Dave, and possibly others.
+Wolfenstein 3D (VGAGRAPH only), Dangerous Dave, and possibly others.
 
 ModId allows you to:
 
@@ -57,16 +57,16 @@ ModId allows you to:
   * Change the fonts 
 	* Alter game texts and special cutscene formats
   
-In fact, ModKeen allows you to totally recreate the appearance of these
-Id games.
+In fact, in the cases of EGA and CGA graphics, ModId allows you to totally
+recreate the appearance of these Id games.
 
 NOTE
 ====
 
-ModId version 2.0 now supports modification of Commander Keen episodes
-4, 5, and 6. In order to modify these episodes, you will need either UNP
-or UNLZEXE to decompress your Commander Keen EXE files, and also Admiral
-Bob's CKxPatch utilities, version 0.9.0 or later. You can get these here:
+ModId now supports modification of Commander Keen episodes 4, 5, and 6.
+In order to modify these episodes, you will need either UNP or UNLZEXE
+to decompress your Commander Keen EXE files, and also Admiral Bob's
+CKxPatch utilities, version 0.9.0 or later. You can get these here:
 
     http://durdin.net/andy/keen/modding/files/unp.zip
     http://durdin.net/andy/keen/modding/files/unlzexe.zip
@@ -74,7 +74,8 @@ Bob's CKxPatch utilities, version 0.9.0 or later. You can get these here:
 
 ModId requires definition files, which are not required by ModKeen.  These
 definition files specify the structure of the game archive.  ModId also allows
-you to use 256-color bitmaps, and it supports EGA, CGA, and VGA graphic archives.
+you to use 256-color bitmaps, and it supports EGA, CGA, and VGA graphic
+archives.
 
    
 USAGE
@@ -168,7 +169,7 @@ By default, ModId outputs the graphics into 256-color BMP files in the directory
   xxx_sprites.txt
     (Galaxy only): This file contains extra information about each sprite. Each line in the file has the sprite number, followed by the four clipping rectangle co- ordinates in square brackets [top, left, bottom, right], followed by the sprite origin in square brackets [top, left], followed by the number of shifts the sprite uses.  The origin of the sprite image is the point from which its location is calculated. For example, the hand sprite in Keen 5 (ck5_sprite_0291.BMP) has several images. The origin for each of these images is in the centre of the "eye", so that as the hand rotates, the different sprite images all appear to rotate about the eye. The origin coordinates are given in pixels from the top-left corner of the sprite image.  The shifts is the number of different copies of the sprite image that are stored in memory, and can be 1, 2, or 4. As a general rule, the more shifts a sprite has, the smoother it moves, but the more memory it takes up. If you are making a very large sprite, you can reduce the number of shifts to save memory. But if you have a small sprite and want it to move more smoothly, increase the number of shifts.
 
-  xxx_txt_nnnn.txt
+  xxx_txt_str.txt
     (Galaxy Only): These text files contain the help, story, and end-game text.  Each file consists of plain text, with embedded commands for displaying pictures and creating new pages. The commands you can use are:
       ^P           Marks the beginning of a page.
       ^Gy,x,n      Displays bitmap number (n - 6) at pixel location x,y on the screen.
@@ -186,7 +187,7 @@ By default, ModId outputs the graphics into 256-color BMP files in the directory
     text screens, which you can edit with an ANSI editor. The other .BIN files should not
     be modified.
 
-  demon.xxx
+  demostr.xxx
     (Galaxy Only): These are the demos that are shown in the game. Using the
     F10+D cheat, you can record your own demos, and then import them back into the game,
     so that you have demos of your own levels.

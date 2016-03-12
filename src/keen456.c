@@ -1780,6 +1780,22 @@ void k456_import_end() {
 		/* Show that something is happening */
 		showprogress((int) ((i * 100) / EpisodeInfo.NumChunks));
 
+		if (Switches->IgrabSig) {
+			if (((i == EpisodeInfo.IndexFonts) && EpisodeInfo.NumFonts) ||
+			    ((i == EpisodeInfo.IndexMaskedFonts) && EpisodeInfo.NumMaskedFonts) ||
+			    ((i == EpisodeInfo.IndexBitmaps) && EpisodeInfo.NumBitmaps) ||
+			    ((i == EpisodeInfo.IndexMaskedBitmaps) && EpisodeInfo.NumMaskedBitmaps) || 
+			    ((i == EpisodeInfo.IndexSprites) && EpisodeInfo.NumSprites) || 
+			    ((i == EpisodeInfo.Index8Tiles) && EpisodeInfo.Num8Tiles) || 
+			    ((i == EpisodeInfo.Index8MaskedTiles) && EpisodeInfo.Num8MaskedTiles) || 
+			    ((i == EpisodeInfo.Index16Tiles) && EpisodeInfo.Num16Tiles) || 
+			    ((i == EpisodeInfo.Index16MaskedTiles) && EpisodeInfo.Num16MaskedTiles)
+			) {
+				fwrite("!ID!", 4, 1, graphfile);
+				offset += 4;
+			}
+		}
+
 		if (EgaGraph[i].data && EgaGraph[i].len > 0) {
 			/* Save the current offset */
 			ptr = offset;
@@ -1789,7 +1805,7 @@ void k456_import_end() {
 			if (!compdata)
 				quit("Not enough memory for compression buffer!");
 
-			len = huff_compress(EgaGraph[i].data, compdata, EgaGraph[i].len, EgaGraph[i].len * 2);
+			len = huff_compress(EgaGraph[i].data, compdata, EgaGraph[i].len, EgaGraph[i].len * 2, Switches->IgrabHuffTrailMode);
 
 			/* If the chunk is not a tile chunk then we need to output the length first */
 			if (i < EpisodeInfo.Index8Tiles || i >= EpisodeInfo.Index32MaskedTiles +

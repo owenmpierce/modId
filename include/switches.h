@@ -31,6 +31,8 @@ typedef struct
 	int Import;
 	int Extract;
 	int SeparateMask;
+	int IgrabSig;
+	int IgrabHuffTrailMode;
 	int Patch;
 	char PalettePath[PATH_MAX];
 	char EpisodeDefPath[PATH_MAX];

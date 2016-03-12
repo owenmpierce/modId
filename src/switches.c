@@ -49,7 +49,7 @@ SwitchStruct *getswitches(int argc, char *argv[])
 	
 	if(argc <= 1)
 	{
-		quit ("Run \"lmodkeen -help\" for information on usage for information on "
+		quit ("Run \"modid -help\" for information on usage for information on "
 		      "usage.\n");
 	}
 
@@ -117,6 +117,18 @@ SwitchStruct *getswitches(int argc, char *argv[])
 		{
 			switches.SeparateMask = 1;
 		}
+		else if(strcmp(option, "igrabsig") == 0)
+		{
+			switches.IgrabSig = 1;
+		}
+		else if(strcmp(option, "igrabhufftrail1") == 0)
+		{
+			switches.IgrabHuffTrailMode = 1;
+		}
+		else if(strcmp(option, "igrabhufftrail2") == 0)
+		{
+			switches.IgrabHuffTrailMode = 2;
+		}
 		else if(stricmp(option, "backup") == 0)
 		{
 			switches.Backup = 1;
@@ -158,6 +170,8 @@ static void defaultswitches()
 	switches.Export = 0;
 	switches.Import = 0;
 	switches.SeparateMask = 0;
+	switches.IgrabSig = 0;
+	switches.IgrabHuffTrailMode = 0;
 	switches.Patch = 1;
 }
 
@@ -214,7 +228,7 @@ static int getswitch(char *string, char **option, char **value)
 static void showswitches (void)
 {
 	fprintf(stdout,
-			"  Valid options for LMODKEEN are:\n"
+			"  Valid options for ModId are:\n"
 			"    -nowait             [Doesn't ask for a keypress at exit; useful for scripts]\n"
 			"    -episode=FILEPATH   [Path to the episode definition file (required)]\n"
 			"    -export             [Export data from Keen to BMP files]\n"
@@ -223,11 +237,14 @@ static void showswitches (void)
 			"    -bmpdir=DIRECTORY   [BMP files are in DIRECTORY (defaults to current)]\n"
 			"    -palette=FILEPATH   [Set BMP palette for export (defaults to EGA colors)]\n"
 			"    -16color            [Masked BMP files have 16 colors, separate masks]\n"
+			"    -igrabsig           [Add !ID! signature before certains chunks as in IGRAB]\n"
+			"    -igrabhufftrail1    [Add trailing byte in compression as in IGRAB]\n"
+			"    -igrabhufftrail2    [Add trailing byte in <60000 chunk compression as in IGRAB]\n"
 			"    -backup             [Create backups of changed files]\n"
 			"    -debug              [Show debug information for developers and testers]\n"
-			"    -help               [Shows the valid options for MODKEEN]\n"
+			"    -help               [Shows the valid options for ModId]\n"
 			"\n"
-			"For more information on ModKeen/LModKeen, read the README file provided with the\n"
+			"For more information on ModId, read the README file provided with the\n"
 			"program's source code or binaries.\n"
 			"\n");
 }
