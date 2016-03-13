@@ -129,6 +129,10 @@ SwitchStruct *getswitches(int argc, char *argv[])
 		{
 			switches.IgrabHuffTrailMode = 2;
 		}
+		else if(strcmp(option, "nosparse") == 0)
+		{
+			switches.SparseTiles = 0;
+		}
 		else if(stricmp(option, "backup") == 0)
 		{
 			switches.Backup = 1;
@@ -172,6 +176,7 @@ static void defaultswitches()
 	switches.SeparateMask = 0;
 	switches.IgrabSig = 0;
 	switches.IgrabHuffTrailMode = 0;
+	switches.SparseTiles = 1;
 	switches.Patch = 1;
 }
 
@@ -240,6 +245,7 @@ static void showswitches (void)
 			"    -igrabsig           [Add !ID! signature before certains chunks as in IGRAB]\n"
 			"    -igrabhufftrail1    [Add trailing byte in compression as in IGRAB]\n"
 			"    -igrabhufftrail2    [Add trailing byte in <60000 chunk compression as in IGRAB]\n"
+			"    -nosparse           [Export sparse Keen 4-6 tiles as black tiles, import as-is]\n"
 			"    -backup             [Create backups of changed files]\n"
 			"    -debug              [Show debug information for developers and testers]\n"
 			"    -help               [Shows the valid options for ModId]\n"

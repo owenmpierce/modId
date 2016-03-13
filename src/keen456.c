@@ -308,6 +308,173 @@ CommandNode SC_GALAXY[] = {
 	ENDCOMMAND
 };
 
+/* Sparse masked 16x16 tiles xGAGRAPH data */
+
+static const uint8_t SPARSE_CGA_MASKED_16TILE[] = {
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00,
+
+	0xFF, 0xFF, 0xFF, 0xFF,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+	0xC0, 0x00, 0x00, 0x00,
+};
+
+static const uint8_t SPARSE_EGA_MASKED_16TILE[] = {
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+	0x00, 0x00,
+
+	0xFF, 0xFF,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+
+	0xFF, 0xFF,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+
+	0xFF, 0xFF,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+
+	0xFF, 0xFF,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+	0x80, 0x00,
+};
+
+static const uint8_t SPARSE_VGA_MASKED_16TILE[] = {
+	15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+};
+
+/* Sparse unmasked 16x16 tiles xGAGRAPH data (re-used from masked data) */
+
+static const uint8_t * const SPARSE_CGA_16TILE = SPARSE_CGA_MASKED_16TILE + 64;
+static const uint8_t * const SPARSE_EGA_16TILE = SPARSE_EGA_MASKED_16TILE + 32;
+static const uint8_t * const SPARSE_VGA_16TILE = SPARSE_VGA_MASKED_16TILE;
+
+static const uint8_t *Sparse16TilePtr;
+static const uint8_t *SparseMasked16TilePtr;
+
+
+static void k456_set_sparse_tiles_ptrs(void) {
+	if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
+		Sparse16TilePtr = SPARSE_VGA_16TILE;
+		SparseMasked16TilePtr = SPARSE_VGA_MASKED_16TILE;
+	} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
+		Sparse16TilePtr = SPARSE_EGA_16TILE;
+		SparseMasked16TilePtr = SPARSE_EGA_MASKED_16TILE;
+	} else {
+		Sparse16TilePtr = SPARSE_CGA_16TILE;
+		SparseMasked16TilePtr = SPARSE_CGA_MASKED_16TILE;
+	}
+}
+
 
 /************************************************************************************************************/
 /** KEEN 4, 5, 6 EXPORTING ROUTINES *************************************************************************/
@@ -565,6 +732,9 @@ void k456_export_begin(SwitchStruct *switches) {
 	if (EpisodeInfo.NumSprites > 0)
 		SprHead = (SpriteHeadStruct *) EgaGraph[EpisodeInfo.IndexSpriteTable].data;
 
+	/* Store pointers to sparse 16x16 tiles */
+	k456_set_sparse_tiles_ptrs();
+
 	free(EgaHead);
 	free(CompEgaGraphData);
 
@@ -788,7 +958,8 @@ void k456_export_tiles() {
 	char filename[PATH_MAX];
 	int i, p, y;
 	int linewidth, planewidth, planebpp, numofplanes, outbpp;
-	uint8_t *pointer;
+	const uint8_t *indata;
+	const uint8_t *pointer;
 
 	if (!ExportInitialised)
 		quit("Trying to export tiles before initialisation!");
@@ -828,23 +999,28 @@ void k456_export_tiles() {
 		/* Show that something is happening */
 		showprogress((i * 100) / EpisodeInfo.Num16Tiles);
 
-		if (EgaGraph[EpisodeInfo.Index16Tiles + i].data) {
-			/* Decode the image data */
-			for (p = 0; p < numofplanes; p++) {
-				/* Decode the lines of the bitmap data */
-				pointer = EgaGraph[EpisodeInfo.Index16Tiles + i].data + p * linewidth * 16;
-				for (y = 0; y < 16; y++)
-					memcpy(planes[p]->lines[y], pointer + y * linewidth, linewidth);
+		indata = EgaGraph[EpisodeInfo.Index16Tiles + i].data;
+		if (!indata) {
+			if (!Switches->SparseTiles) {
+				continue;
 			}
-
-			if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
-				bmp = bmp256_demunge(planes, 4, 8);
-			} else {
-				bmp = bmp256_merge_ex(planes, numofplanes, 4);
-			}
-			bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
-			bmp256_free(bmp);
+			indata = Sparse16TilePtr;
 		}
+		/* Decode the image data */
+		for (p = 0; p < numofplanes; p++) {
+			/* Decode the lines of the bitmap data */
+			pointer = indata + p * linewidth * 16;
+			for (y = 0; y < 16; y++)
+				memcpy(planes[p]->lines[y], pointer + y * linewidth, linewidth);
+		}
+
+		if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
+			bmp = bmp256_demunge(planes, 4, 8);
+		} else {
+			bmp = bmp256_merge_ex(planes, numofplanes, 4);
+		}
+		bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
+		bmp256_free(bmp);
 	}
 	completemsg();
 
@@ -864,7 +1040,8 @@ void k456_export_masked_tiles() {
 	char filename[PATH_MAX];
 	int i, p, y;
 	int planebpp, linewidth, totalnumofplanes, outbpp;
-	uint8_t *pointer;
+	const uint8_t *indata;
+	const uint8_t *pointer;
 
 	if (!ExportInitialised)
 		quit("Trying to export masked tiles before initialisation!");
@@ -889,19 +1066,24 @@ void k456_export_masked_tiles() {
 			/* Show that something is happening */
 			showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
 
-			if (EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data) {
-				/* Decode the image data */
-				for (p = 0; p < 4; p++) {
-					/* Decode the lines of the bitmap data */
-					pointer = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data + p * 4 * 16;
-					for (y = 0; y < 16; y++)
-						memcpy(planes[p]->lines[y], pointer + y * 4, 4);
+			indata = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data;
+			if (!indata) {
+				if (!Switches->SparseTiles) {
+					continue;
 				}
-
-				bmp = bmp256_demunge(planes, 4, 8);
-				bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
-				bmp256_free(bmp);
+				indata = SparseMasked16TilePtr;
 			}
+			/* Decode the image data */
+			for (p = 0; p < 4; p++) {
+				/* Decode the lines of the bitmap data */
+				pointer = indata + p * 4 * 16;
+				for (y = 0; y < 16; y++)
+					memcpy(planes[p]->lines[y], pointer + y * 4, 4);
+			}
+
+			bmp = bmp256_demunge(planes, 4, 8);
+			bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
+			bmp256_free(bmp);
 		}
 		completemsg();
 
@@ -941,26 +1123,31 @@ void k456_export_masked_tiles() {
 			/* Show that something is happening */
 			showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
 
-			if (EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data) {
-				/* Decode the mask and color plane data */
-				for (p = 0; p < totalnumofplanes; p++) {
-					/* Decode the lines of the bitmap data */
-					pointer = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data + ((p + 1) % totalnumofplanes) * linewidth * 16;
-					for (y = 0; y < 16; y++)
-						memcpy(planes[p]->lines[y], pointer + y * linewidth, linewidth);
+			indata = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data;
+			if (!indata) {
+				if (!Switches->SparseTiles) {
+					continue;
 				}
-
-				/* Draw the tile to the master tilesheet */
-				if (Switches->SeparateMask) {
-					bmp256_blit(planes[totalnumofplanes-1], 0, 0, tiles, 16 * 18 + 16 * (i % 18), 16 * (i / 18), 16, 16);
-					bmp = bmp256_merge_ex(planes, totalnumofplanes-1, 4);
-				} else {
-					bmp = bmp256_merge_ex(planes, totalnumofplanes, outbpp);
-				}
-
-				bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
-				bmp256_free(bmp);
+				indata = SparseMasked16TilePtr;
 			}
+			/* Decode the mask and color plane data */
+			for (p = 0; p < totalnumofplanes; p++) {
+				/* Decode the lines of the bitmap data */
+				pointer = indata + ((p + 1) % totalnumofplanes) * linewidth * 16;
+				for (y = 0; y < 16; y++)
+					memcpy(planes[p]->lines[y], pointer + y * linewidth, linewidth);
+			}
+
+			/* Draw the tile to the master tilesheet */
+			if (Switches->SeparateMask) {
+				bmp256_blit(planes[totalnumofplanes-1], 0, 0, tiles, 16 * 18 + 16 * (i % 18), 16 * (i / 18), 16, 16);
+				bmp = bmp256_merge_ex(planes, totalnumofplanes-1, 4);
+			} else {
+				bmp = bmp256_merge_ex(planes, totalnumofplanes, outbpp);
+			}
+
+			bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
+			bmp256_free(bmp);
 		}
 		completemsg();
 
@@ -1725,6 +1912,9 @@ void k456_import_begin(SwitchStruct *switches) {
 		EgaGraph[EpisodeInfo.IndexSpriteTable].len = sizeof (SpriteHeadStruct) * EpisodeInfo.NumSprites;
 	}
 
+	/* Store pointers to sparse 16x16 tiles */
+	k456_set_sparse_tiles_ptrs();
+
 	ImportInitialised = 1;
 }
 
@@ -2212,6 +2402,12 @@ void k456_import_tiles() {
 		}
 		bmp256_free(tile);
 
+		/* Check for sparse tile */
+		if (Switches->SparseTiles && !memcmp(EgaGraph[EpisodeInfo.Index16Tiles + i].data, Sparse16TilePtr, EgaGraph[EpisodeInfo.Index16Tiles + i].len)) {
+			free(EgaGraph[EpisodeInfo.Index16Tiles + i].data);
+			EgaGraph[EpisodeInfo.Index16Tiles + i].data = 0;
+			EgaGraph[EpisodeInfo.Index16Tiles + i].len = 0;
+		}
 	}
 	completemsg();
 
@@ -2290,6 +2486,12 @@ void k456_import_masked_tiles() {
 			}
 			bmp256_free(tile);
 
+			/* Check for sparse tile */
+			if (Switches->SparseTiles && !memcmp(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data, SparseMasked16TilePtr, EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len)) {
+				free(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data);
+				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = 0;
+				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = 0;
+			}
 		}
 		completemsg();
 
@@ -2382,6 +2584,12 @@ void k456_import_masked_tiles() {
 			}
 			bmp256_free(tile);
 
+			/* Check for sparse tile */
+			if (Switches->SparseTiles && !memcmp(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data, SparseMasked16TilePtr, EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len)) {
+				free(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data);
+				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = 0;
+				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = 0;
+			}
 		}
 		completemsg();
 
