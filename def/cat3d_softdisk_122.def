@@ -9,7 +9,7 @@ GALAXY
 		PICS            155 5 0
 		PICM            3 160 1
 		SPRITES         3 163 2
-		TILE8           104 166 # The EXE has the count of 36 defined
+		TILE8           104 166 # The EXE has the count of 108 defined
 		TILE8M          12 167 # The EXE has the count of 36 defined
 		TILE16          216 168
 		TILE16M         72 384
