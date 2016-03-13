@@ -1,0 +1,38 @@
+#ModId definition file for Catacomb Abyss, Softdisk release v1.24
+GALAXY
+	GAMEEXT abs
+	GRSTARTS 3
+	EXEINFO abysgame.exe 0x2F690 0x1A2E0 0x2583A 0x1A00
+	CHUNKS 626
+		FONT		1 3		#num, start
+		FONTM		0 4
+		PICS            309 4 0
+		PICM		1 313 1
+		SPRITES         1 314 2
+		TILE8  		104 315 # The EXE has the count of 108 defined
+		TILE8M          12 316 # The EXE has the count of 36 defined
+		TILE16          216 317
+		TILE16M         72 533
+		TILE32          0 605
+		TILE32M         0 605
+		TEXT		605 level1text
+		TEXT		606 level2text
+		TEXT		607 level3text
+		TEXT		608 level4text
+		TEXT		609 level5text
+		TEXT		610 level6text
+		TEXT		611 level7text
+		TEXT		612 level8text
+		TEXT		613 level9text
+		TEXT		614 level10text
+		TEXT		615 level11text
+		TEXT		616 level12text
+		TEXT		617 level13text
+		TEXT		618 level14text
+		TEXT		619 level15text
+		TEXT		620 level16text
+		TEXT		621 level17text
+		TEXT		622 level18text
+		TEXT		623 level19text
+		TEXT		624 level20text
+		MISC		625 piracy

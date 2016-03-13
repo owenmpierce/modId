@@ -1,0 +1,36 @@
+#ModId definition file for Catacomb Apocalypse, Softdisk release v1.01
+GALAXY
+	GAMEEXT apc
+	GRSTARTS 3
+	EXEINFO apocgame.exe 0x2EB80 0x1BF50 0x2479C 0x2200
+	CHUNKS 682
+		FONT		1 3		#num, start
+		FONTM		0 4
+		PICS            367 4 0
+		PICM		1 371 1
+		SPRITES         1 372 2
+		TILE8  		104 373 # The EXE has the count of 108 defined
+		TILE8M          12 374 # The EXE has the count of 36 defined
+		TILE16          216 375
+		TILE16M         72 591
+		TILE32          0 663
+		TILE32M         0 663
+		TEXT		663 level1text
+		TEXT		664 level2text
+		TEXT		665 level3text
+		TEXT		666 level4text
+		TEXT		667 level5text
+		TEXT		668 level6text
+		TEXT		669 level7text
+		TEXT		670 level8text
+		TEXT		671 level9text
+		TEXT		672 level10text
+		TEXT		673 level11text
+		TEXT		674 level12text
+		TEXT		675 level13text
+		TEXT		676 level14text
+		TEXT		677 level15text
+		TEXT		678 level16text
+		TEXT		679 level17text
+		TEXT		680 level18text
+		MISC		681 piracy
