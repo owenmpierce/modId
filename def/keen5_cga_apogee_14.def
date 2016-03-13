@@ -1,0 +1,36 @@
+#ModId definition file for Keen 5, CGA Apogee release, v1.4
+GALAXY
+	GAMEEXT ck5
+	GRAPHICSFORMAT CGA
+	GRSTARTS 3
+	EXEINFO keen5c.exe 0x3BB10 0x1F800 0x33F88 0x2A00
+	CHUNKS 4929
+		FONT		2 3		#num, start
+		FONTM		0 5
+		PICS            94  5	 0      #num, start, tablestart
+		PICM            3   99 	 1
+		SPRITES         346 102  2
+		TILE8           104 448
+		TILE8M          20 449
+		TILE16          1512 450
+		TILE16M         2952 1962
+		TILE32          0 4914
+		TILE32M         0 4914
+
+		TEXT    	4914 helpart1
+		TEXT    	4915 helpart2
+		TEXT    	4916 helpart3
+		TEXT    	4917 helpart4
+		TEXT    	4918 endart1
+		TEXT    	4919 endart2
+		TEXT    	4920 helpart5
+
+		B800TEXT	4921 endgame
+		B800TEXT	4922 outofmem
+		MISC		4923 explosion
+
+		DEMO    	4924 0
+		DEMO    	4925 1
+		DEMO    	4926 2
+		DEMO    	4927 3
+		DEMO    	4928 4

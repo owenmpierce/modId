@@ -1,0 +1,29 @@
+#ModId definition file for Keen 6, CGA FormGen release, v1.4
+GALAXY
+	GAMEEXT ck6
+	GRAPHICSFORMAT CGA
+	GRSTARTS 3
+	EXEINFO keen6.exe 0x3D560 0x1EB30 0x35430 0x2A00
+	CHUNKS 5554
+		FONT		2 3				#num, start
+		FONTM		0 5
+		PICS            34  5	 0      #num, start, tablestart
+		PICM            3   39 	 1
+		SPRITES         390 42   2
+		TILE8           104 432
+		TILE8M          12 433
+		TILE16          2376 434
+		TILE16M         2736 2810
+		TILE32          0 5546
+		TILE32M         0 5546
+
+		TEXT		5546 endart
+
+		B800TEXT 5547 endgame
+		B800TEXT 5548 outofmem
+
+		DEMO    	5549 0
+		DEMO    	5550 1
+		DEMO    	5551 2
+		DEMO    	5552 3
+		DEMO    	5553 4
