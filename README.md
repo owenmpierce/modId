@@ -68,9 +68,9 @@ In order to modify these episodes, you will need either UNP or UNLZEXE
 to decompress your Commander Keen EXE files, and also Admiral Bob's
 CKxPatch utilities, version 0.9.0 or later. You can get these here:
 
-    http://durdin.net/andy/keen/modding/files/unp.zip
-    http://durdin.net/andy/keen/modding/files/unlzexe.zip
-    http://durdin.net/andy/keen/modding/files/ckpatch090.zip
+    http://files.keenmodding.org/unp.zip
+    http://files.keenmodding.org/unlzexe.zip
+    http://files.keenmodding.org/ckpatch090.zip
 
 ModId requires definition files, which are not required by ModKeen.  These
 definition files specify the structure of the game archive.  ModId also allows
