@@ -1,5 +1,5 @@
-#ModId definition file for Biomenace 1
-GALAXY 
+#ModId definition file for Bio Menace Episode 1, freeware Apogee release v1.1
+GALAXY
 	GAMEEXT bm1
 	GRSTARTS 3
 	EXEINFO bmenace1.exe 0x3D740 0 0 0x2E00
@@ -7,13 +7,13 @@ GALAXY
 		FONT		2 3	#num, start
 		FONTM		0 5
 		PICS            50 5 0      #num, start, tablestart
-		PICM            1 55 1   
-		SPRITES         354 56 2 
-		TILE8           108 411 
-		TILE8M          12 412   
+		PICM            1 55 1
+		SPRITES         355 56 2
+		TILE8           108 411
+		TILE8M          12 412
 		TILE16          1512 413
 		TILE16M         2682 1925
-		TILE32          0 4607 
+		TILE32          0 4607
 		TILE32M         0 4607
 
 		TEXT    	4607 helpart1
@@ -32,5 +32,3 @@ GALAXY
 
 		B800TEXT 4619 endgame
 		B800TEXT 4620 outofmem
-			
-

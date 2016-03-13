@@ -1,18 +1,18 @@
-#ModId definition file for Biomenace 2
-GALAXY 
+#ModId definition file for Bio Menace Episode 2, freeware Apogee release v1.1
+GALAXY
 	GAMEEXT bm2
 	GRSTARTS 3
 	CHUNKS 4648
 		FONT		2 3	#num, start
 		FONTM		0 5
 		PICS            45 5 0      #num, start, tablestart
-		PICM            1 50 1   
-		SPRITES         389 51 2 
-		TILE8           108 440 
-		TILE8M          12 441   
+		PICM            1 50 1
+		SPRITES         389 51 2
+		TILE8           108 440
+		TILE8M          12 441
 		TILE16          1728 442
 		TILE16M         2466 2170
-		TILE32          0 4636 
+		TILE32          0 4636
 		TILE32M         0 4636
 
 		TEXT    	4636 helpart1
@@ -29,5 +29,3 @@ GALAXY
 
 		B800TEXT 4646 endgame
 		B800TEXT 4647 outofmem
-			
-
