@@ -1,22 +1,39 @@
-#ModId definition file for Catacomb-3D: The Descent (1991-1993 Softdisk)
-GALAXY 
+#ModId definition file for Catacomb 3-D: The Descent, Softdisk release v1.22
+GALAXY
 	GAMEEXT c3d
 	GRSTARTS 3
 	EXEINFO cat3d.exe 0x2D7A0 0x1A880 0x22FD8 0x1600 
 	CHUNKS 478
 		FONT		2 3		#num, start
-		FONTM		0 3
+		FONTM		0 5
 		PICS            155 5 0
 		PICM            3 160 1
 		SPRITES         3 163 2
-		TILE8           108 166
-		TILE8M          36 167
+		TILE8           104 166 # The EXE has the count of 36 defined
+		TILE8M          12 167 # The EXE has the count of 36 defined
 		TILE16          216 168
 		TILE16M         72 384
-		TILE32          0 456 
+		TILE32          0 456
 		TILE32M         0 456
-		TEXT		20 456   
-		B800TEXT	476 dos-screen-1
-		MISC 		477 misc-1 #Don't know what this is, but CA_ClearMarks says there's 478 chunks
-
-
+		TEXT		456 level1text
+		TEXT		457 level2text
+		TEXT		458 level3text
+		TEXT		459 level4text
+		TEXT		460 level5text
+		TEXT		461 level6text
+		TEXT		462 level7text
+		TEXT		463 level8text
+		TEXT		464 level9text
+		TEXT		465 level10text
+		TEXT		466 level11text
+		TEXT		467 level12text
+		TEXT		468 level13text
+		TEXT		469 level14text
+		TEXT		470 level15text
+		TEXT		471 level16text
+		TEXT		472 level17text
+		TEXT		473 level18text
+		TEXT		474 level19text
+		TEXT		475 level20text
+		B800TEXT	476 outofmem
+		MISC 		477 piracy
