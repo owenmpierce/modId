@@ -1,8 +1,8 @@
 #ModId definition file for Catacomb Armageddon, Softdisk release v1.01
-GALAXY 
+GALAXY
 	GAMEEXT arm
 	GRSTARTS 3
-	EXEINFO catarm.exe 0x2E840 0x1BE00 0x24648 0x2000 
+	EXEINFO catarm.exe 0x2E840 0x1BE00 0x24648 0x2000
 	CHUNKS 658
 		FONT		1 3		#num, start
 		FONTM		0 4
