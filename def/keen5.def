@@ -1,20 +1,20 @@
-#ModId definition file for Keen 5
-GALAXY 
+#ModId definition file for Keen 5, EGA Apogee release, v1.4
+GALAXY
 	GAMEEXT ck5
 	GRSTARTS 3
-	EXEINFO keen5e.exe 0x3E370 0x21FC0 0x362C4 0x2C00 
+	EXEINFO keen5e.exe 0x3E370 0x21FC0 0x362C4 0x2C00
 	CHUNKS 4931
 		FONT		3 3		#num, start
-		FONTM		0 3
+		FONTM		0 6
 		PICS            93  6	 0      #num, start, tablestart
-		PICM            3   99 	 1   
-		SPRITES         346 102  2 
-		TILE8           104 448  
-		TILE8M          20 449   
-		TILE16          1512 450 
+		PICM            3   99 	 1
+		SPRITES         346 102  2
+		TILE8           104 448
+		TILE8M          20 449
+		TILE16          1512 450
 		TILE16M         2952 1962
-		TILE32          0 4914   
-		TILE32M         0 4914   
+		TILE32          0 4914
+		TILE32M         0 4914
 
 		TEXT    	4914 helpart1
 		TEXT    	4915 helpart2

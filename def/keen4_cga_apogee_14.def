@@ -1,5 +1,5 @@
 #ModId definition file for Keen 4, CGA Apogee release, v1.4
-GALAXY 
+GALAXY
 	GAMEEXT ck4
 	GRAPHICSFORMAT CGA
 	GRSTARTS 3
@@ -8,14 +8,14 @@ GALAXY
 		FONT		2 3	#num, start
 		FONTM		0 5
 		PICS            116 5 0      #num, start, tablestart
-		PICM            3 121 1   
-		SPRITES         397 124 2 
-		TILE8           104 521  
-		TILE8M          20 522   
-		TILE16          1296 523 
+		PICM            3 121 1
+		SPRITES         397 124 2
+		TILE8           104 521
+		TILE8M          20 522
+		TILE16          1296 523
 		TILE16M         2916 1819
-		TILE32          0 4735   
-		TILE32M         0 4735   
+		TILE32          0 4735
+		TILE32M         0 4735
 
 		B800TEXT 4735 endgame
 		TERMINATOR 4736 commander
