@@ -1,0 +1,35 @@
+#ModId definition file for Catacomb Armageddon, Softdisk release v1.01
+GALAXY
+	GAMEEXT arm
+	GRSTARTS 3
+	EXEINFO catarm.exe 0x2E840 0x1BE00 0x24648 0x2000
+	CHUNKS 658
+		FONT		1 3		#num, start
+		FONTM		0 4
+		PICS            344 4 0
+		PICM		1 348 1
+		SPRITES         1 349 2
+		TILE8  		104 350 # The EXE may have the count of 108 defined
+		TILE8M          12 351 # The EXE may have the count of 36 defined
+		TILE16          216 352
+		TILE16M         72 568
+		TILE32          0 640
+		TILE32M         0 640
+		TEXT		640 level1text
+		TEXT		641 level2text
+		TEXT		642 level3text
+		TEXT		643 level4text
+		TEXT		644 level5text
+		TEXT		645 level6text
+		TEXT		646 level7text
+		TEXT		647 level8text
+		TEXT		648 level9text
+		TEXT		649 level10text
+		TEXT		650 level11text
+		TEXT		651 level12text
+		TEXT		652 level13text
+		TEXT		653 level14text
+		TEXT		654 level15text
+		TEXT		655 level16text
+		TEXT		656 level17text
+		MISC		657 piracy
