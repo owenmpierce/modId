@@ -1,7 +1,7 @@
 /* SWITCHES.C - Switch-handling routines.
 **
- ** Copyright (c)2016 by Owen Pierce
- ** Based on LModkeen 2 Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
+** Copyright (c)2016 by Owen Pierce
+** Based on LModkeen 2 Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
 ** Based on ModKeen 2.0.1 Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)
 ** 
 ** This software is provided 'as-is', without any express or implied warranty.
@@ -78,11 +78,11 @@ SwitchStruct *getswitches(int argc, char *argv[])
 				quit("Cannot both import and export!");
 			switches.Import = 1;
 		}
-		else if(stricmp(option, "episode") == 0)
+		else if(stricmp(option, "gamedef") == 0)
 		{
 			FILE *def;
 			if(!value)
-				quit("No episode definition file given!");
+				quit("No game definition file given!");
 
 			/* First check for a valid path to a readable definition file */
 			if ((def = fopen(value, "r")) != NULL)
@@ -95,7 +95,7 @@ SwitchStruct *getswitches(int argc, char *argv[])
 		else if(stricmp(option, "gamedir") == 0)
 		{
 			if(!value)
-				quit("No directory for Keen files given!");
+				quit("No directory for game files given!");
 
 			strncpy(switches.InputPath, value, PATH_MAX);
 		}
@@ -157,7 +157,7 @@ SwitchStruct *getswitches(int argc, char *argv[])
 	if(!switches.Import && !switches.Export)
 		quit("Either -import or -export must be given!");
 	if(strlen(switches.EpisodeDefPath) == 0)
-		quit("The episode definition path must be given!");
+		quit("The game definition path must be given!");
 	
 	return &switches;
 }
@@ -235,10 +235,10 @@ static void showswitches (void)
 	fprintf(stdout,
 			"  Valid options for ModId are:\n"
 			"    -nowait             [Doesn't ask for a keypress at exit; useful for scripts]\n"
-			"    -episode=FILEPATH   [Path to the episode definition file (required)]\n"
-			"    -export             [Export data from Keen to BMP files]\n"
-			"    -import             [Import data from BMP files to Keen]\n"
-			"    -gamedir=DIRECTORY  [Keen files are in DIRECTORY (defaults to current)]\n"
+			"    -gamedef=FILEPATH   [Path to the game definition file (required)]\n"
+			"    -export             [Export game data to BMP files (and more)]\n"
+			"    -import             [Import game data from BMP files (and more)]\n"
+			"    -gamedir=DIRECTORY  [Game files are in DIRECTORY (defaults to current)]\n"
 			"    -bmpdir=DIRECTORY   [BMP files are in DIRECTORY (defaults to current)]\n"
 			"    -palette=FILEPATH   [Set BMP palette for export (defaults to EGA colors)]\n"
 			"    -16color            [Masked BMP files have 16 colors, separate masks]\n"

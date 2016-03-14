@@ -39,8 +39,10 @@
 #include "utils.h"
 
 
+static char* txt_signature0 =
+"ModId 0.1 - Copyright (c)2016 Owen Pierce\n";
 static char* txt_signature1 =
-"LMODKEEN 2 release 1 - Windows/Linux ModKeen port, Copyright (c) 2007 by Shadow Master\n";
+"Based on LMODKEEN 2 release 1 - Windows/Linux ModKeen port, Copyright (c) 2007 by Shadow Master\n";
 static char* txt_signature2 =
 "Based on ModKeen 2.0.1 source code, Copyright (c) 2002-2004 Andrew Durdin\n"
 "Based on Fin2BMP source code, Copyright (c) 2002 Andrew Durdin\n"
@@ -124,8 +126,9 @@ int main(int argc, char *argv[]) {
 
 	/* Display the signature (again)*/
 	bold;
-	do_output(txt_signature1);
+	do_output(txt_signature0);
 	unbold;
+	do_output(txt_signature1);
 	do_output(txt_signature2);
 
 	if (switches->Export) {
