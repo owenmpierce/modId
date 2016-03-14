@@ -170,7 +170,6 @@ static void defaultswitches()
 	strncpy(switches.EpisodeDefPath, "", PATH_MAX);
 	
 	switches.Backup = 0;
-	switches.Episode = 0;
 	switches.Export = 0;
 	switches.Import = 0;
 	switches.SeparateMask = 0;
