@@ -532,11 +532,13 @@ void k456_export_begin(SwitchStruct *switches) {
 
 	/* If either one is not found externally, then check in the exe */
 	if (!dictfile || !headfile) {
+		if (*EpisodeInfo.ExeName == '\0')
+			quit("Can't open %sdict.%s or %shead.%s for reading!", graphicsformat, EpisodeInfo.GameExt, graphicsformat, EpisodeInfo.GameExt);
 		/* Open the EXE */
 		sprintf(filename, "%s/%s", Switches->InputPath, EpisodeInfo.ExeName);
 		exefile = fopen(filename, "rb");
 		if (!exefile)
-			quit("Can't open %s for reading!", filename);
+			quit("Can't open %s, %sdict.%s or %shead.%s for reading!", filename, graphicsformat, EpisodeInfo.GameExt, graphicsformat, EpisodeInfo.GameExt);
 
 		// Due to my modification to get_exe_image_size(), I MUST initialize exeheaderlen with 0
 		// or random data might be extracted from it, which screws up the resultant exeimglen value.
@@ -1834,11 +1836,13 @@ void k456_import_begin(SwitchStruct *switches) {
 
 	/* If it is not found externally, then check in the exe */
 	if (!dictfile) {
+		if (*EpisodeInfo.ExeName == '\0')
+			quit("Can't open %sdict.%s for reading!", graphicsformat, EpisodeInfo.GameExt);
 		/* Open the EXE */
 		sprintf(filename, "%s/%s", Switches->InputPath, EpisodeInfo.ExeName);
 		exefile = fopen(filename, "rb");
 		if (!exefile)
-			quit("Can't open %s for reading!", filename);
+			quit("Can't open %s or %sdict.%s for reading!", filename, graphicsformat, EpisodeInfo.GameExt);
 
 		// Due to my modification to get_exe_image_size(), I MUST initialize exeheaderlen with 0
 		// or random data might be extracted from it, which screws up the resultant exeimglen value.
