@@ -1620,7 +1620,8 @@ void k456_export_fonts() {
 				if (FontHead->Width[j] > w)
 					w = FontHead->Width[j];
 
-			font = bmp256_create(w * 16, FontHead->Height * 16, 4);
+			/* Need at least 2-bpp for the separate background color, which translates to 4-bpp or more for the BMP format */
+			font = bmp256_create(w * 16, FontHead->Height * 16, !strcmp(EpisodeInfo.GraphicsFormat, "VGA") ? 8 : 4);
 
 			/* Create a bitmap for the character */
 			if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA"))

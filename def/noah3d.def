@@ -1,0 +1,24 @@
+#ModId definition file for Super 3-D Noah's Ark, Wisdom Tree release, v1.0 (DOS)
+GALAXY 
+	GAMEEXT n3d
+	GRAPHICSFORMAT VGA
+	GRSTARTS 3
+	CHUNKS 134
+		FONT		2 1		#num, start
+		FONTM		0 3
+		PICS		123 3 0      #num, start, tablestart
+		PICM		0 126 0   
+		SPRITES		0 126 0 
+		TILE8		107 126 # The EXE has a count of 144 defined
+		TILE8M		0 127
+		TILE16		0 127
+		TILE16M		0 127
+		TILE32		0 127
+		TILE32M		0 127
+		MISC		127 titlepalette
+		B800TEXT	128 orderscreen
+		B800TEXT	129 errorscreen
+		TEXT		130 helpart
+		DEMO		131 0
+		DEMO		132 1
+		DEMO		133 2
