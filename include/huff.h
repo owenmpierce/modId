@@ -24,6 +24,8 @@
 void huff_expand(unsigned char *pin, unsigned char *pout, unsigned long inlen, unsigned long outlen);
 unsigned long huff_compress(unsigned char *pin, unsigned char *pout, unsigned long inlen, unsigned long outlen, int igrabhufftrailmode);
 void huff_read_dictionary(FILE *fin, unsigned long offset);
+void huff_write_dictionary(FILE *fout);
+void huffmanize(int counts[]);
 void huff_setup_compression();
 
 #endif /* !INC_HUFF_H__ */

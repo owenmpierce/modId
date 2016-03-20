@@ -1831,62 +1831,63 @@ void k456_import_begin(SwitchStruct *switches) {
 	/* Read Game archive data */
 	exefile = dictfile = filetoread = NULL;
 
-	/* Check for ?GADICT */
-	sprintf(filename, "%s/%sdict.%s", Switches->InputPath, graphicsformat, EpisodeInfo.GameExt);
-	dictfile = fopen(filename, "rb");
+	if (!Switches->OptimizedComp) {
+		/* Check for ?GADICT */
+		sprintf(filename, "%s/%sdict.%s", Switches->InputPath, graphicsformat, EpisodeInfo.GameExt);
+		dictfile = fopen(filename, "rb");
 
-	/* If it is not found externally, then check in the exe */
-	if (!dictfile) {
-		if (*EpisodeInfo.ExeName == '\0')
-			quit("Can't open %sdict.%s for reading!", graphicsformat, EpisodeInfo.GameExt);
-		/* Open the EXE */
-		sprintf(filename, "%s/%s", Switches->InputPath, EpisodeInfo.ExeName);
-		exefile = fopen(filename, "rb");
-		if (!exefile)
-			quit("Can't open %s or %sdict.%s for reading!", filename, graphicsformat, EpisodeInfo.GameExt);
+		/* If it is not found externally, then check in the exe */
+		if (!dictfile) {
+			if (*EpisodeInfo.ExeName == '\0')
+				quit("Can't open %sdict.%s for reading!", graphicsformat, EpisodeInfo.GameExt);
+			/* Open the EXE */
+			sprintf(filename, "%s/%s", Switches->InputPath, EpisodeInfo.ExeName);
+			exefile = fopen(filename, "rb");
+			if (!exefile)
+				quit("Can't open %s or %sdict.%s for reading!", filename, graphicsformat, EpisodeInfo.GameExt);
 
-		// Due to my modification to get_exe_image_size(), I MUST initialize exeheaderlen with 0
-		// or random data might be extracted from it, which screws up the resultant exeimglen value.
-		// TODO: bug with this
-		exeheaderlen = 0;
+			// Due to my modification to get_exe_image_size(), I MUST initialize exeheaderlen with 0
+			// or random data might be extracted from it, which screws up the resultant exeimglen value.
+			// TODO: bug with this
+			exeheaderlen = 0;
 
-		/* Check that it's the right version (and it's unpacked) */
-		if (!get_exe_image_size(exefile, &exeimglen, &exeheaderlen))
-			quit("%s is not a valid exe file!", filename);
-		if (DebugMode) {
-			do_output("Exe Image Length is: 0x%08lX\n", exeimglen);
-			do_output("Header length is: 0x%08lX\n", exeheaderlen);
+			/* Check that it's the right version (and it's unpacked) */
+			if (!get_exe_image_size(exefile, &exeimglen, &exeheaderlen))
+				quit("%s is not a valid exe file!", filename);
+			if (DebugMode) {
+				do_output("Exe Image Length is: 0x%08lX\n", exeimglen);
+				do_output("Header length is: 0x%08lX\n", exeheaderlen);
+			}
+			if (exeimglen != EpisodeInfo.ExeImageSize)
+				quit("Incorrect .exe image length for %s.  (Expected %X, found %X). "
+						" Check your game version!\n", filename, EpisodeInfo.ExeImageSize,
+						exeimglen);
+			if (exeimglen != EpisodeInfo.ExeImageSize)
+				quit("Incorrect .exe header length for %s.  (Expected %X, found %X). "
+						" Check your game version!\n", filename, EpisodeInfo.ExeHeaderSize,
+						exeheaderlen);
 		}
-		if (exeimglen != EpisodeInfo.ExeImageSize)
-			quit("Incorrect .exe image length for %s.  (Expected %X, found %X). "
-					" Check your game version!\n", filename, EpisodeInfo.ExeImageSize,
-					exeimglen);
-		if (exeimglen != EpisodeInfo.ExeImageSize)
-			quit("Incorrect .exe header length for %s.  (Expected %X, found %X). "
-					" Check your game version!\n", filename, EpisodeInfo.ExeHeaderSize,
-					exeheaderlen);
-	}
 
-	/* Get the EGADICT data*/
-	if (dictfile) {
-		filetoread = dictfile;
-		offset = 0;
-	} else {
-		setcol_warning;
-		do_output("Cannot find %s, Extracting %sDICT from the exe.\n", filename, 
-				EpisodeInfo.GraphicsFormat);
-		setcol_normal;
-		filetoread = exefile;
-		offset = exeheaderlen + EpisodeInfo.OffEgaDict;
-	}
-	huff_read_dictionary(filetoread, offset);
-	huff_setup_compression();
+		/* Get the EGADICT data*/
+		if (dictfile) {
+			filetoread = dictfile;
+			offset = 0;
+		} else {
+			setcol_warning;
+			do_output("Cannot find %s, Extracting %sDICT from the exe.\n", filename, 
+					EpisodeInfo.GraphicsFormat);
+			setcol_normal;
+			filetoread = exefile;
+			offset = exeheaderlen + EpisodeInfo.OffEgaDict;
+		}
+		huff_read_dictionary(filetoread, offset);
 
-	/* Close the files */
-	if (dictfile)
-		fclose(dictfile);
-	if (exefile)
-		fclose(exefile);
+		/* Close the files */
+		if (dictfile)
+			fclose(dictfile);
+		if (exefile)
+			fclose(exefile);
+	}
 
 	/* Initialise the EGAGRAPH */
 	EgaGraph = (ChunkStruct *) malloc(EpisodeInfo.NumChunks * sizeof (ChunkStruct));
@@ -1925,10 +1926,11 @@ void k456_import_begin(SwitchStruct *switches) {
 
 void k456_import_end() {
 	char filename[PATH_MAX];
-	int i;
+	int i, j;
 	uint8_t *compdata;
-	FILE *headfile, *graphfile, *patchfile;
+	FILE *dictfile, *headfile, *graphfile, *patchfile;
 	uint32_t offset, len, grstart_mask, ptr;
+	int byteCounts[256];
 	char graphicsformat[4];
 
 	if (!ImportInitialised)
@@ -1967,6 +1969,30 @@ void k456_import_end() {
 	if (!graphfile)
 		quit("Unable to open %s for writing!", filename);
 
+
+	if (Switches->OptimizedComp) {
+		for (i = 0; i < 256; ++i) {
+			byteCounts[i] = 0;
+		}
+		for (i = 0; i < EpisodeInfo.NumChunks; i++) {
+			if (EgaGraph[i].data && EgaGraph[i].len > 0) {
+				for (j = 0; j < EgaGraph[i].len; ++j) {
+					++byteCounts[EgaGraph[i].data[j]];
+				}
+			}
+		}
+		huffmanize(byteCounts);
+		/* Open the EGADICT file for writing */
+		sprintf(filename, "%s/%sdict.%s", Switches->InputPath, graphicsformat, 
+				EpisodeInfo.GameExt);
+		dictfile = openfile(filename, "wb", Switches->Backup);
+		if (!dictfile)
+			quit("Unable to open %s for writing!", filename);
+
+		huff_write_dictionary(dictfile);
+		fclose(dictfile);
+	}
+	huff_setup_compression();
 
 	/* Compress data and output the EGAHEAD and EGAGRAPH */
 	do_output("Compressing: ");
@@ -2051,8 +2077,11 @@ void k456_import_end() {
 		fprintf(patchfile, "%%ext %s\n"
 				"%%version 1.4\n" // TODO: Put this in definition file and episode info
 				"# Load the modified graphics\n"
-				"%%egahead egahead.%s\n"
-				"%%end\n", EpisodeInfo.GameExt, EpisodeInfo.GameExt);
+				"%%egahead egahead.%s\n", EpisodeInfo.GameExt, EpisodeInfo.GameExt);
+		if (Switches->OptimizedComp) {
+			fprintf(patchfile, "%%egadict egadict.%s\n", EpisodeInfo.GameExt);
+		}
+		fprintf(patchfile, "%%end\n");
 		fclose(patchfile);
 	}
 }

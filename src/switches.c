@@ -133,6 +133,10 @@ SwitchStruct *getswitches(int argc, char *argv[])
 		{
 			switches.SparseTiles = 0;
 		}
+		else if(strcmp(option, "optimizedcomp") == 0)
+		{
+			switches.OptimizedComp = 1;
+		}
 		else if(stricmp(option, "backup") == 0)
 		{
 			switches.Backup = 1;
@@ -176,6 +180,7 @@ static void defaultswitches()
 	switches.IgrabSig = 0;
 	switches.IgrabHuffTrailMode = 0;
 	switches.SparseTiles = 1;
+	switches.OptimizedComp = 0;
 	switches.Patch = 1;
 }
 
@@ -245,6 +250,7 @@ static void showswitches (void)
 			"    -igrabhufftrail1    [Add trailing byte in compression as in IGRAB]\n"
 			"    -igrabhufftrail2    [Add trailing byte in <60000 chunk compression as in IGRAB]\n"
 			"    -nosparse           [Export sparse Keen 4-6 tiles as black tiles, import as-is]\n"
+			"    -optimizedcomp      [Create optimized Huffman dictionary while importing]\n"
 			"    -backup             [Create backups of changed files]\n"
 			"    -debug              [Show debug information for developers and testers]\n"
 			"    -help               [Shows the valid options for ModId]\n"

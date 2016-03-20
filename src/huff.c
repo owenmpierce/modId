@@ -2,6 +2,7 @@
 **
 ** Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)
 ** printf parameters modified for LModKeen 2 integration.
+** huffmanize function imported and modified from TED5.
 **
 ** This software is provided 'as-is', without any express or implied warranty.
 ** In no event will the authors be held liable for any damages arising from
@@ -20,6 +21,7 @@
 
 #include <stdio.h>
 #include "pconio.h"
+#include "utils.h"
 
 typedef struct
 {
@@ -32,7 +34,7 @@ typedef struct {
 	unsigned long bits;
 } compstruct;
 
-static nodestruct nodes[255];
+static nodestruct nodes[256]; /* Only 255 should be used, but xGADICT generally has an additional zero node */
 static compstruct comptable[256];
 
 
@@ -89,6 +91,12 @@ void huff_read_dictionary(FILE *fin, unsigned long offset)
 	fread(nodes, sizeof(nodestruct), 255, fin);
 }
 
+/* Write the huffman dictionary to a file */
+void huff_write_dictionary(FILE *fout)
+{
+	fwrite(nodes, sizeof(nodestruct), 256, fout); // Includes last zero node
+}
+
 void trace_node(int curnode, int numbits, unsigned long curbits)
 {
 	int bit0, bit1;
@@ -110,6 +118,73 @@ void trace_node(int curnode, int numbits, unsigned long curbits)
 		
 		trace_node(bit0, numbits, curbits);
 		trace_node(bit1, numbits, (curbits | (1UL << (numbits - 1))));
+	}
+}
+
+/* Takes the counts array and builds a huffman tree at nodes array. */
+
+void huffmanize(int counts[])
+{
+	/* codes are either bytes if <256 or nodearray numbers+256 if >=256 */
+	unsigned short value[256],code0,code1;
+	/* probablilities are the number of times the code is hit or $ffffffff if
+	it is allready part of a higher node */
+	unsigned int prob[256],low/*,workprob*/;
+
+	short i,worknode/*,bitlength*/;
+	/*unsigned int bitstring;*/
+
+
+	/* all possible leaves start out as bytes */
+	for (i=0; i<256; i++)
+	{
+		value[i] = i;
+		prob[i] = counts[i];
+	}
+
+	/* start selecting the lowest probable leaves for the ends of the tree */
+
+	worknode = 0;
+	while (1)	/* break out of when all codes have been used */
+	{
+		/* find the two lowest probability codes */
+
+		code0=0xffff;
+		low = 0x7fffffff;
+		for (i=0;i<256;i++)
+			if (prob[i]<low)
+			{
+				code0 = i;
+				low = prob[i];
+			}
+
+		code1=0xffff;
+		low = 0x7fffffff;
+		for (i=0;i<256;i++)
+			if (prob[i]<low && i != code0)
+			{
+				code1 = i;
+				low = prob[i];
+			}
+
+		if (code1 == 0xffff)
+		{
+			if (value[code0]<256)
+				quit("Wierdo huffman error: last code wasn't a node!");
+			if (value[code0]-256 != 254)
+				quit("Wierdo huffman error: headnode wasn't 254!");
+			break;
+		}
+
+		/* make code0 into a pointer to work
+		remove code1 (make 0xffffffff prob) */
+		nodes[worknode].bit0 = value[code0];
+		nodes[worknode].bit1 = value[code1];
+
+		value[code0] = 256 + worknode;
+		prob[code0] += prob[code1];
+		prob[code1] = 0xffffffff;
+		worknode++;
 	}
 }
 

@@ -33,6 +33,7 @@ typedef struct
 	int IgrabSig;
 	int IgrabHuffTrailMode;
 	int SparseTiles;
+	int OptimizedComp;
 	int Patch;
 	char PalettePath[PATH_MAX];
 	char EpisodeDefPath[PATH_MAX];
