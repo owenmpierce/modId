@@ -2500,8 +2500,14 @@ void k456_import_masked_tiles() {
 		totalnumofplanes = 2;
 	}
 
-	/* Skip the first tile, as it should always be transparent */
-	for (i = 1; i < EpisodeInfo.Num16MaskedTiles; i++) {
+	// Generally, it makes sense to skip the first tile, so it is
+	// always transparent. However, in an early Wolfenstein 3D
+	// alpha, tile no. 128 (counting from 0) mistakenly got
+	// relocated to the location of tile no. 0, for an unknown
+	// reason. So we support importing such tiles back, just for
+	// the possibility of faithfully recreating original
+	// xGAGRAPH files.
+	for (i = 0; i < EpisodeInfo.Num16MaskedTiles; i++) {
 		/* Show that something is happening */
 		showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
 
