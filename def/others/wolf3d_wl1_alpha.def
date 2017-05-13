@@ -1,0 +1,17 @@
+#ModId definition file for Wolfenstein 3D, 1-episode ALPHA release
+GALAXY 
+	GAMEEXT wl1
+	GRAPHICSFORMAT VGA
+	GRSTARTS 3
+	CHUNKS 426
+		FONT		2 1		#num, start
+		FONTM		0 3
+		PICS            62 3 0      #num, start, tablestart
+		PICM            0 65 0   
+		SPRITES         0 65 0 
+		TILE8           35 65 # The EXE has a count of 72 defined
+		TILE8M          0 66   
+		TILE16          144 66
+		TILE16M         216 210
+		TILE32          0 426   
+		TILE32M         0 426
