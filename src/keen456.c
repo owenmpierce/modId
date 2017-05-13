@@ -1091,123 +1091,73 @@ void k456_export_masked_tiles() {
 	/* Export all the masked tiles into one bitmap*/
 	do_output("Exporting masked tiles: ");
 
-#if 0
 	if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
-
-		/* VGA masked tiles are formatted identically to unmasked tiles
-		 * but the color key is used by the game to perform masking */
-		tiles = bmp256_create(16 * 18, 16 * ((EpisodeInfo.Num16MaskedTiles + 17) / 18), 8);
-
-		/* Create an 8bpp bitmap for each plane */
-		for (p = 0; p < 4; p++)
-			planes[p] = bmp256_create(4, 16, 8);
-
-		for (i = 0; i < EpisodeInfo.Num16MaskedTiles; i++) {
-			/* Show that something is happening */
-			showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
-
-			indata = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data;
-			if (!indata) {
-				if (!Switches->SparseTiles) {
-					continue;
-				}
-				indata = SparseMasked16TilePtr;
-			}
-			/* Decode the image data */
-			for (p = 0; p < 4; p++) {
-				/* Decode the lines of the bitmap data */
-				pointer = indata + p * 4 * 16;
-				for (y = 0; y < 16; y++)
-					memcpy(planes[p]->lines[y], pointer + y * 4, 4);
-			}
-
-			bmp = bmp256_demunge(planes, 4, 8);
-			bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
-			bmp256_free(bmp);
-		}
-		completemsg();
-
-		/* Create the bitmap file */
-		sprintf(filename, "%s/%s_tile16m.bmp", Switches->OutputPath, EpisodeInfo.GameExt);
-		if (!bmp256_save(tiles, filename, Switches->Backup))
-			quit("Can't open bitmap file %s!", filename);
-
-		/* Free the memory used */
-		for (p = 0; p < 4; p++)
-			bmp256_free(planes[p]);
-		bmp256_free(tiles);
-
+		linewidth = 16;
+		planebpp = 8;
+		outbpp = 8;
+		totalnumofplanes = 2;
+	} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
+		linewidth = 2;
+		planebpp = 1;
+		outbpp = doSeparateMask ? 4 : 8;
+		totalnumofplanes = 5;
 	} else {
-#endif
-	{
-		if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
-			linewidth = 16;
-			planebpp = 8;
-			outbpp = 8;
-			totalnumofplanes = 2;
-		} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
-			linewidth = 2;
-			planebpp = 1;
-			outbpp = doSeparateMask ? 4 : 8;
-			totalnumofplanes = 5;
-		} else {
-			linewidth = 4;
-			planebpp = 2;
-			outbpp = 4;
-			totalnumofplanes = 2;
-		}
-
-		if (doSeparateMask)
-			tiles = bmp256_create(16 * 18 * 2, 16 * ((EpisodeInfo.Num16MaskedTiles + 17) / 18), outbpp);
-		else
-			tiles = bmp256_create(16 * 18, 16 * ((EpisodeInfo.Num16MaskedTiles + 17) / 18), outbpp);
-
-		/* Create a bitmap for each plane */
-		for (p = 0; p < totalnumofplanes; p++)
-			planes[p] = bmp256_create(16, 16, planebpp);
-
-		for (i = 0; i < EpisodeInfo.Num16MaskedTiles; i++) {
-			/* Show that something is happening */
-			showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
-
-			indata = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data;
-			if (!indata) {
-				if (!Switches->SparseTiles) {
-					continue;
-				}
-				indata = SparseMasked16TilePtr;
-			}
-			/* Decode the mask and color plane data */
-			for (p = 0; p < totalnumofplanes; p++) {
-				/* Decode the lines of the bitmap data */
-				pointer = indata + ((p + 1) % totalnumofplanes) * linewidth * 16;
-				for (y = 0; y < 16; y++)
-					memcpy(planes[p]->lines[y], pointer + y * linewidth, linewidth);
-			}
-
-			/* Draw the tile to the master tilesheet */
-			if (doSeparateMask) {
-				bmp256_blit(planes[totalnumofplanes-1], 0, 0, tiles, 16 * 18 + 16 * (i % 18), 16 * (i / 18), 16, 16);
-				bmp = bmp256_merge_ex(planes, totalnumofplanes-1, outbpp);
-			} else {
-				bmp = bmp256_merge_ex(planes, totalnumofplanes, outbpp);
-			}
-
-			bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
-			bmp256_free(bmp);
-		}
-		completemsg();
-
-		/* Create the bitmap file */
-		sprintf(filename, "%s/%s_tile16m.bmp", Switches->OutputPath, EpisodeInfo.GameExt);
-		if (!bmp256_save(tiles, filename, Switches->Backup))
-			quit("Can't open bitmap file %s!", filename);
-
-		/* Free the memory used */
-		for (p = 0; p < totalnumofplanes; p++)
-			bmp256_free(planes[p]);
-		bmp256_free(tiles);
+		linewidth = 4;
+		planebpp = 2;
+		outbpp = 4;
+		totalnumofplanes = 2;
 	}
+
+	if (doSeparateMask)
+		tiles = bmp256_create(16 * 18 * 2, 16 * ((EpisodeInfo.Num16MaskedTiles + 17) / 18), outbpp);
+	else
+		tiles = bmp256_create(16 * 18, 16 * ((EpisodeInfo.Num16MaskedTiles + 17) / 18), outbpp);
+
+	/* Create a bitmap for each plane */
+	for (p = 0; p < totalnumofplanes; p++)
+		planes[p] = bmp256_create(16, 16, planebpp);
+
+	for (i = 0; i < EpisodeInfo.Num16MaskedTiles; i++) {
+		/* Show that something is happening */
+		showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
+
+		indata = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data;
+		if (!indata) {
+			if (!Switches->SparseTiles) {
+				continue;
+			}
+			indata = SparseMasked16TilePtr;
+		}
+		/* Decode the mask and color plane data */
+		for (p = 0; p < totalnumofplanes; p++) {
+			/* Decode the lines of the bitmap data */
+			pointer = indata + ((p + 1) % totalnumofplanes) * linewidth * 16;
+			for (y = 0; y < 16; y++)
+				memcpy(planes[p]->lines[y], pointer + y * linewidth, linewidth);
+		}
+
+		/* Draw the tile to the master tilesheet */
+		if (doSeparateMask) {
+			bmp256_blit(planes[totalnumofplanes-1], 0, 0, tiles, 16 * 18 + 16 * (i % 18), 16 * (i / 18), 16, 16);
+			bmp = bmp256_merge_ex(planes, totalnumofplanes-1, outbpp);
+		} else {
+			bmp = bmp256_merge_ex(planes, totalnumofplanes, outbpp);
+		}
+
+		bmp256_blit(bmp, 0, 0, tiles, 16 * (i % 18), 16 * (i / 18), 16, 16);
+		bmp256_free(bmp);
+	}
+	completemsg();
+
+	/* Create the bitmap file */
+	sprintf(filename, "%s/%s_tile16m.bmp", Switches->OutputPath, EpisodeInfo.GameExt);
+	if (!bmp256_save(tiles, filename, Switches->Backup))
+		quit("Can't open bitmap file %s!", filename);
+
+	/* Free the memory used */
+	for (p = 0; p < totalnumofplanes; p++)
+		bmp256_free(planes[p]);
+	bmp256_free(tiles);
 }
 
 void k456_export_8_tiles() {
@@ -2512,181 +2462,109 @@ void k456_import_masked_tiles() {
 	/* Import all the masked tiles */
 	do_output("Importing masked tiles: ");
 
-#if 0
+	granularity = doSeparateMask ? 2 : 1;
+
+	/* Open the bitmap file */
+	sprintf(filename, "%s/%s_tile16m.bmp", Switches->OutputPath, EpisodeInfo.GameExt);
+	bmp = bmp256_load(filename);
+	if (!bmp)
+		quit("Can't open bitmap file %s!", filename);
+	if (bmp->width != 18 * 16 * granularity)
+		quit("Masked tile bitmap %s is not %d pixels wide!", filename,
+				granularity * 18 * 16);
+
+	if (bmp->bpp != 4 && bmp->bpp != 8)
+		quit("Masked tile bitmap %s has neither 16 nor 256 colors!", filename);
+
+	if ((!strcmp(EpisodeInfo.GraphicsFormat, "VGA") && bmp->bpp != 8) ||
+	    (!strcmp(EpisodeInfo.GraphicsFormat, "EGA") && !doSeparateMask && bmp->bpp != 8) ||
+	    (!strcmp(EpisodeInfo.GraphicsFormat, "EGA") && doSeparateMask && bmp->bpp != 4) ||
+	    (!strcmp(EpisodeInfo.GraphicsFormat, "CGA") && bmp->bpp != 4))
+		quit("Masked tile bitmap %s doesn't have proper color count!", filename);
+
+	/* Allocate memory for all tiles */
 	if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
-
-		/* Allocate memory for the all the tiles */
-		blocksize = VGABLOCK * 4;
 		tilebpp = 8;
-		linewidth = 4;
-
-		/* Open the bitmap file */
-		sprintf(filename, "%s/%s_tile16m.bmp", Switches->OutputPath, EpisodeInfo.GameExt);
-		bmp = bmp256_load(filename);
-		if (!bmp)
-			quit("Can't open bitmap file %s!", filename);
-		if (bmp->width != 18 * 16)
-			quit("Tile bitmap %s is not 288 pixels wide!", filename);
-		if (bmp->bpp != 8)
-			quit("Tile bitmap %s is not 256 colors!", filename);
-
-		for (i = 0; i < EpisodeInfo.Num16MaskedTiles; i++) {
-			/* Show that something is happening */
-			showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
-
-			/* Extract the tile we want */
-			tile = bmp256_create(16, 16, tilebpp);
-			if (!tile)
-				quit("Not enough memory to create bitmap!");
-			bmp256_blit(bmp, (i % 18) * 16, (i / 18) * 16, tile, 0, 0, 16, 16);
-
-			/* Decode the tile */
-			bmp256_munge(tile, planes, 4);
-
-			/* Allocate memory for the data */
-			EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = blocksize;
-			pointer = malloc(blocksize);
-			if (!pointer)
-				quit("Not enough memory for tile %d!", i);
-			EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = pointer;
-
-			/* Encode the bitmap data */
-			for (p = 0; p < 4; p++) {
-				if (!planes[p])
-					quit("Not enough memory to create bitmap!");
-
-				/* Encode the lines of the image data */
-				pointer = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data + p * 16 * linewidth;
-				for (y = 0; y < 16; y++)
-					memcpy(pointer + linewidth * y, planes[p]->lines[y], linewidth);
-			}
-
-			/* Free the memory used */
-			for (p = 0; p < 4; p++) {
-				bmp256_free(planes[p]);
-			}
-			bmp256_free(tile);
-
-			/* Check for sparse tile */
-			if (Switches->SparseTiles && !memcmp(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data, SparseMasked16TilePtr, EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len)) {
-				free(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data);
-				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = 0;
-				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = 0;
-			}
-		}
-		completemsg();
-
-		bmp256_free(bmp);
-
+		planebpp = 8;
+		linewidth = 16;
+		totalnumofplanes = 2;
+	} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
+		tilebpp = doSeparateMask ? 4 : 8;
+		planebpp = 1;
+		linewidth = 2;
+		totalnumofplanes = 5;
 	} else {
-#endif
-	{
-		granularity = doSeparateMask ? 2 : 1;
-
-		/* Open the bitmap file */
-		sprintf(filename, "%s/%s_tile16m.bmp", Switches->OutputPath, EpisodeInfo.GameExt);
-		bmp = bmp256_load(filename);
-		if (!bmp)
-			quit("Can't open bitmap file %s!", filename);
-		if (bmp->width != 18 * 16 * granularity)
-			quit("Masked tile bitmap %s is not %d pixels wide!", filename,
-					granularity * 18 * 16);
-
-		if (bmp->bpp != 4 && bmp->bpp != 8)
-			quit("Masked tile bitmap %s has neither 16 nor 256 colors!", filename);
-
-		if ((!strcmp(EpisodeInfo.GraphicsFormat, "VGA") && bmp->bpp != 8) ||
-		    (!strcmp(EpisodeInfo.GraphicsFormat, "EGA") && !doSeparateMask && bmp->bpp != 8) ||
-		    (!strcmp(EpisodeInfo.GraphicsFormat, "EGA") && doSeparateMask && bmp->bpp != 4) ||
-		    (!strcmp(EpisodeInfo.GraphicsFormat, "CGA") && bmp->bpp != 4))
-			quit("Masked tile bitmap %s doesn't have proper color count!", filename);
-
-		/* Allocate memory for all tiles */
-		if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
-			tilebpp = 8;
-			planebpp = 8;
-			linewidth = 16;
-			totalnumofplanes = 2;
-		} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
-			tilebpp = doSeparateMask ? 4 : 8;
-			planebpp = 1;
-			linewidth = 2;
-			totalnumofplanes = 5;
-		} else {
-			tilebpp = 4;
-			planebpp = 2;
-			linewidth = 4;
-			totalnumofplanes = 2;
-		}
-
-		/* Skip the first tile, as it should always be transparent */
-		for (i = 1; i < EpisodeInfo.Num16MaskedTiles; i++) {
-			/* Show that something is happening */
-			showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
-
-			/* Extract the color data of the tile we want */
-			tile = bmp256_create(16, 16, tilebpp);
-			if (!tile)
-				quit("Not enough memory to create bitmap!");
-			bmp256_blit(bmp, (i % 18) * 16, (i / 18) * 16, tile, 0, 0, 16, 16);
-
-
-			/* Extract the tile mask */
-			if (doSeparateMask) {
-				/* Get the color planes */
-				if (!bmp256_split_ex2(tile, &planes[1], 0, totalnumofplanes-1, planebpp))
-					quit("Not enough memory to create bitmap!");
-
-				/* Get the mask */
-				planes[0] = bmp256_create(16, 16, planebpp);
-				if (!planes[0])
-					quit("Not enough memory to create bitmap!");
-				bmp256_blit(bmp, 16 * 18 + (i % 18) * 16, (i / 18) * 16, planes[0], 0, 0, 16, 16);
-			} else {
-				/* Get mask and color plane, and shuffle planes into order */
-				if (!bmp256_split_ex2(tile, &planes[1], 0, totalnumofplanes, planebpp))
-					quit("Not enough memory to create bitmap!");
-				planes[0] = planes[totalnumofplanes];
-				planes[totalnumofplanes] = NULL;
-			}
-
-			/* Allocate memory for the data */
-			EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = linewidth * 16 * totalnumofplanes;
-			pointer = malloc(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len);
-			if (!pointer)
-				quit("Not enough memory for masked tile %d!", i);
-			EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = pointer;
-
-			/* Encode the bitmap data */
-			for (p = 0; p < totalnumofplanes; p++) {
-				if (!planes[p])
-					quit("Not enough memory to create bitmap!");
-
-				/* Encode the lines of the image data */
-				pointer = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data + p * linewidth * 16;
-				for (y = 0; y < 16; y++)
-					memcpy(pointer + y * linewidth, planes[p]->lines[y], linewidth);
-			}
-
-			/* Free the memory used */
-			for (p = 0; p < totalnumofplanes; p++) {
-				bmp256_free(planes[p]);
-			}
-			bmp256_free(tile);
-
-			/* Check for sparse tile */
-			if (Switches->SparseTiles && !memcmp(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data, SparseMasked16TilePtr, EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len)) {
-				free(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data);
-				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = 0;
-				EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = 0;
-			}
-		}
-		completemsg();
-
-		bmp256_free(bmp);
-
-
+		tilebpp = 4;
+		planebpp = 2;
+		linewidth = 4;
+		totalnumofplanes = 2;
 	}
+
+	/* Skip the first tile, as it should always be transparent */
+	for (i = 1; i < EpisodeInfo.Num16MaskedTiles; i++) {
+		/* Show that something is happening */
+		showprogress((i * 100) / EpisodeInfo.Num16MaskedTiles);
+
+		/* Extract the color data of the tile we want */
+		tile = bmp256_create(16, 16, tilebpp);
+		if (!tile)
+			quit("Not enough memory to create bitmap!");
+		bmp256_blit(bmp, (i % 18) * 16, (i / 18) * 16, tile, 0, 0, 16, 16);
+
+
+		/* Extract the tile mask */
+		if (doSeparateMask) {
+			/* Get the color planes */
+			if (!bmp256_split_ex2(tile, &planes[1], 0, totalnumofplanes-1, planebpp))
+				quit("Not enough memory to create bitmap!");
+
+			/* Get the mask */
+			planes[0] = bmp256_create(16, 16, planebpp);
+			if (!planes[0])
+				quit("Not enough memory to create bitmap!");
+			bmp256_blit(bmp, 16 * 18 + (i % 18) * 16, (i / 18) * 16, planes[0], 0, 0, 16, 16);
+		} else {
+			/* Get mask and color plane, and shuffle planes into order */
+			if (!bmp256_split_ex2(tile, &planes[1], 0, totalnumofplanes, planebpp))
+				quit("Not enough memory to create bitmap!");
+			planes[0] = planes[totalnumofplanes];
+			planes[totalnumofplanes] = NULL;
+		}
+
+		/* Allocate memory for the data */
+		EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = linewidth * 16 * totalnumofplanes;
+		pointer = malloc(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len);
+		if (!pointer)
+			quit("Not enough memory for masked tile %d!", i);
+		EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = pointer;
+
+		/* Encode the bitmap data */
+		for (p = 0; p < totalnumofplanes; p++) {
+			if (!planes[p])
+				quit("Not enough memory to create bitmap!");
+
+			/* Encode the lines of the image data */
+			pointer = EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data + p * linewidth * 16;
+			for (y = 0; y < 16; y++)
+				memcpy(pointer + y * linewidth, planes[p]->lines[y], linewidth);
+		}
+
+		/* Free the memory used */
+		for (p = 0; p < totalnumofplanes; p++) {
+			bmp256_free(planes[p]);
+		}
+		bmp256_free(tile);
+
+		/* Check for sparse tile */
+		if (Switches->SparseTiles && !memcmp(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data, SparseMasked16TilePtr, EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len)) {
+			free(EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data);
+			EgaGraph[EpisodeInfo.Index16MaskedTiles + i].data = 0;
+			EgaGraph[EpisodeInfo.Index16MaskedTiles + i].len = 0;
+		}
+	}
+	completemsg();
+
+	bmp256_free(bmp);
 }
 
 void k456_import_8_tiles() {
