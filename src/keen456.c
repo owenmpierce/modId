@@ -433,7 +433,44 @@ static const uint8_t SPARSE_EGA_MASKED_16TILE[] = {
 	0x80, 0x00,
 };
 
+// This one differs from the masked form
+static const uint8_t SPARSE_VGA_16TILE[] = {
+	15, 15, 15, 15, 15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,
+	15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,
+	15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,
+	15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0, 15,  0,  0,  0,
+	15, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	15, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+};
+
 static const uint8_t SPARSE_VGA_MASKED_16TILE[] = {
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+
 	15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
 	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
@@ -456,7 +493,6 @@ static const uint8_t SPARSE_VGA_MASKED_16TILE[] = {
 
 static const uint8_t * const SPARSE_CGA_16TILE = SPARSE_CGA_MASKED_16TILE + 64;
 static const uint8_t * const SPARSE_EGA_16TILE = SPARSE_EGA_MASKED_16TILE + 32;
-static const uint8_t * const SPARSE_VGA_16TILE = SPARSE_VGA_MASKED_16TILE;
 
 static const uint8_t *Sparse16TilePtr;
 static const uint8_t *SparseMasked16TilePtr;
@@ -1044,6 +1080,7 @@ void k456_export_masked_tiles() {
 	int planebpp, linewidth, totalnumofplanes, outbpp;
 	const uint8_t *indata;
 	const uint8_t *pointer;
+	bool doSeparateMask = Switches->SeparateMask || !strcmp(EpisodeInfo.GraphicsFormat, "VGA");
 
 	if (!ExportInitialised)
 		quit("Trying to export masked tiles before initialisation!");
@@ -1054,6 +1091,7 @@ void k456_export_masked_tiles() {
 	/* Export all the masked tiles into one bitmap*/
 	do_output("Exporting masked tiles: ");
 
+#if 0
 	if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
 
 		/* VGA masked tiles are formatted identically to unmasked tiles
@@ -1100,10 +1138,17 @@ void k456_export_masked_tiles() {
 		bmp256_free(tiles);
 
 	} else {
-		if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
+#endif
+	{
+		if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
+			linewidth = 16;
+			planebpp = 8;
+			outbpp = 8;
+			totalnumofplanes = 2;
+		} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
 			linewidth = 2;
 			planebpp = 1;
-			outbpp = Switches->SeparateMask ? 4 : 8;
+			outbpp = doSeparateMask ? 4 : 8;
 			totalnumofplanes = 5;
 		} else {
 			linewidth = 4;
@@ -1112,7 +1157,7 @@ void k456_export_masked_tiles() {
 			totalnumofplanes = 2;
 		}
 
-		if (Switches->SeparateMask)
+		if (doSeparateMask)
 			tiles = bmp256_create(16 * 18 * 2, 16 * ((EpisodeInfo.Num16MaskedTiles + 17) / 18), outbpp);
 		else
 			tiles = bmp256_create(16 * 18, 16 * ((EpisodeInfo.Num16MaskedTiles + 17) / 18), outbpp);
@@ -1141,9 +1186,9 @@ void k456_export_masked_tiles() {
 			}
 
 			/* Draw the tile to the master tilesheet */
-			if (Switches->SeparateMask) {
+			if (doSeparateMask) {
 				bmp256_blit(planes[totalnumofplanes-1], 0, 0, tiles, 16 * 18 + 16 * (i % 18), 16 * (i / 18), 16, 16);
-				bmp = bmp256_merge_ex(planes, totalnumofplanes-1, 4);
+				bmp = bmp256_merge_ex(planes, totalnumofplanes-1, outbpp);
 			} else {
 				bmp = bmp256_merge_ex(planes, totalnumofplanes, outbpp);
 			}
@@ -2454,8 +2499,9 @@ void k456_import_masked_tiles() {
 	char filename[PATH_MAX];
 	int i, p, y;
 	unsigned granularity;
-	uint32_t blocksize, tilebpp, linewidth, planebpp, totalnumofplanes;
+	uint32_t tilebpp, linewidth, planebpp, totalnumofplanes;
 	uint8_t *pointer;
+	bool doSeparateMask = Switches->SeparateMask || !strcmp(EpisodeInfo.GraphicsFormat, "VGA");
 
 	if (!ImportInitialised)
 		quit("Trying to import masked tiles before initialisation!");
@@ -2466,6 +2512,7 @@ void k456_import_masked_tiles() {
 	/* Import all the masked tiles */
 	do_output("Importing masked tiles: ");
 
+#if 0
 	if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
 
 		/* Allocate memory for the all the tiles */
@@ -2532,7 +2579,9 @@ void k456_import_masked_tiles() {
 		bmp256_free(bmp);
 
 	} else {
-		granularity = Switches->SeparateMask ? 2 : 1;
+#endif
+	{
+		granularity = doSeparateMask ? 2 : 1;
 
 		/* Open the bitmap file */
 		sprintf(filename, "%s/%s_tile16m.bmp", Switches->OutputPath, EpisodeInfo.GameExt);
@@ -2546,13 +2595,20 @@ void k456_import_masked_tiles() {
 		if (bmp->bpp != 4 && bmp->bpp != 8)
 			quit("Masked tile bitmap %s has neither 16 nor 256 colors!", filename);
 
-		if ((!strcmp(EpisodeInfo.GraphicsFormat, "EGA") && !Switches->SeparateMask && bmp->bpp != 8) ||
-		    ((!strcmp(EpisodeInfo.GraphicsFormat, "CGA") || Switches->SeparateMask) && (bmp->bpp != 4)))
+		if ((!strcmp(EpisodeInfo.GraphicsFormat, "VGA") && bmp->bpp != 8) ||
+		    (!strcmp(EpisodeInfo.GraphicsFormat, "EGA") && !doSeparateMask && bmp->bpp != 8) ||
+		    (!strcmp(EpisodeInfo.GraphicsFormat, "EGA") && doSeparateMask && bmp->bpp != 4) ||
+		    (!strcmp(EpisodeInfo.GraphicsFormat, "CGA") && bmp->bpp != 4))
 			quit("Masked tile bitmap %s doesn't have proper color count!", filename);
 
 		/* Allocate memory for all tiles */
-		if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
-			tilebpp = Switches->SeparateMask ? 4 : 8;
+		if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
+			tilebpp = 8;
+			planebpp = 8;
+			linewidth = 16;
+			totalnumofplanes = 2;
+		} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
+			tilebpp = doSeparateMask ? 4 : 8;
 			planebpp = 1;
 			linewidth = 2;
 			totalnumofplanes = 5;
@@ -2576,7 +2632,7 @@ void k456_import_masked_tiles() {
 
 
 			/* Extract the tile mask */
-			if (Switches->SeparateMask) {
+			if (doSeparateMask) {
 				/* Get the color planes */
 				if (!bmp256_split_ex2(tile, &planes[1], 0, totalnumofplanes-1, planebpp))
 					quit("Not enough memory to create bitmap!");

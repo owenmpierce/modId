@@ -489,7 +489,7 @@ BITMAP256 *bmp256_merge_ex(BITMAP256 *planes[], unsigned planecount, unsigned bp
 
 
 	for (p = 0; p < planecount; p++) {
-		assert(planes[p] && (planes[p]->bpp == 1 || planes[p]->bpp == 2) &&
+		assert(planes[p] && (planes[p]->bpp == 1 || planes[p]->bpp == 2 || (planecount == 1 && planes[p]->bpp == 8)) &&
 				planes[p]->bpp == planes[0]->bpp &&
 				planes[p]->width == planes[0]->width &&
 				planes[p]->height == planes[0]->height);
