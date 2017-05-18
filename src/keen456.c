@@ -680,6 +680,19 @@ void k456_export_begin(SwitchStruct *switches) {
 
 		/* Make sure the chunk is valid */
 		if (offset != grstart_mask) {
+			inlen = 0;
+			/* Find out the input length */
+			for (j = i + 1; j < EpisodeInfo.NumChunks; j++) {
+				if (EgaHead[j] != grstart_mask) {
+					inlen = EgaHead[j] - offset;
+					break;
+				}
+			}
+			/* Technically, there should be an extra header entry proceeding the final grstart,
+			 * as this is how the ID Caching manager determines the compressed chunk length */
+			if (j == EpisodeInfo.NumChunks)
+				inlen = egagraphlen - offset;
+
 			/* Get the expanded length of the chunk */
 			if (i >= EpisodeInfo.Index8Tiles && i < EpisodeInfo.Index32MaskedTiles + EpisodeInfo.Num32MaskedTiles) {
 				/* Expanded sizes of 8, 16,and 32 tiles are implicit */
@@ -723,18 +736,6 @@ void k456_export_begin(SwitchStruct *switches) {
 				quit("Not enough memory to decompress %sGRAPH chunk %d (size %X at %X)!", 
 						EpisodeInfo.GraphicsFormat, i, outlen, offset);
 
-			inlen = 0;
-			/* Find out the input length */
-			for (j = i + 1; j < EpisodeInfo.NumChunks; j++) {
-				if (EgaHead[j] != grstart_mask) {
-					inlen = EgaHead[j] - offset;
-					break;
-				}
-			}
-			/* Technically, there should be an extra header entry proceeding the final grstart,
-			 * as this is how the ID Caching manager determines the compressed chunk length */
-			if (j == EpisodeInfo.NumChunks)
-				inlen = egagraphlen - offset;
 			if (DebugMode) {
 				gotoxy(0, wherey() + 1);
 				do_output("Expanding chunk:");
@@ -850,7 +851,7 @@ void k456_export_bitmaps() {
 			/* Create the bitmap file */
 			sprintf(filename, "%s/%s_pic_%04d.bmp", Switches->OutputPath, EpisodeInfo.GameExt, i);
 			if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
-				bmp = bmp256_demunge(planes, 4, 8);
+				bmp = bmp256_demunge(planes, numofplanes, 8);
 			} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
 				bmp = bmp256_merge_ex(planes, 4, 4);
 			} else {
