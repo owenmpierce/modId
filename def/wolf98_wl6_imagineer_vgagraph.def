@@ -1,0 +1,31 @@
+#ModId definition file for Wolfenstein 3D for PC-98, Imagineer release
+#VGAGRAPH.WL6
+GALAXY 
+	GAMEEXT wl6
+	GRAPHICSFORMAT VGA
+	GRSTARTS 3
+	CHUNKS 147
+		FONT		2 1		#num, start
+		FONTM		0 3
+		PICS		130 3 0 #num, start, tablestart
+		PICM		0 133 0
+		SPRITES		0 133 0
+		TILE8		35 133 # The EXE has a count of 72 defined
+		TILE8M		0 134
+		TILE16		0 134
+		TILE16M		0 134
+		TILE32		0 134
+		TILE32M		0 134
+		B800TEXT	134 orderscreen
+		B800TEXT	135 errorscreen
+		TEXT		136 helpart
+		DEMO		137 0
+		DEMO		138 1
+		DEMO		139 2
+		DEMO		140 3
+		TEXT		141 endart1
+		TEXT		142 endart2
+		TEXT		143 endart3
+		TEXT		144 endart4
+		TEXT		145 endart5
+		TEXT		146 endart6
