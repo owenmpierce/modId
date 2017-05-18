@@ -44,6 +44,8 @@
 #define VGABLOCK 64
 #define VGAMASKBLOCK 128
 
+#define VGA_98GRAPH_HELPSCREENS_PICS_NUM 10 // Can't start macro with 98...
+
 void parse_k456_misc_ascent(void **);
 void parse_k456_misc_descent(void **);
 void parse_k456_b800_descent(void **);
@@ -129,6 +131,7 @@ static BitmapHeadStruct *BmpMaskedHead = NULL;
 static SpriteHeadStruct *SprHead = NULL;
 static SwitchStruct *Switches = NULL;
 static MiscInfoList *MiscInfos = NULL;
+static bool Is98Graph = false; // 98GRAPH HACK
 
 /* A buffer for file-defined episodes */
 static EpisodeInfoStruct EpisodeInfo;
@@ -529,6 +532,7 @@ void k456_export_begin(SwitchStruct *switches) {
 	int i, j;
 	uint32_t grstart_mask;
 	char graphicsformat[4];
+	char OrigGraphicsFormat[sizeof(EpisodeInfo.GraphicsFormat)]; // 98GRAPH HACK
 
 
 	/* Never allow the export start to occur more than once */
@@ -544,12 +548,19 @@ void k456_export_begin(SwitchStruct *switches) {
 
 	if (strcmp(EpisodeInfo.GraphicsFormat, "CGA") && 
 			strcmp(EpisodeInfo.GraphicsFormat, "EGA") &&
-			strcmp(EpisodeInfo.GraphicsFormat, "VGA"))
-		quit("Graphics Format must be CGA, EGA, or VGA.");
+			strcmp(EpisodeInfo.GraphicsFormat, "VGA") &&
+			strcmp(EpisodeInfo.GraphicsFormat, "98"))
+		quit("Graphics Format must be CGA, EGA, VGA or 98.");
 
 	strncpy(graphicsformat, EpisodeInfo.GraphicsFormat, 4);
 	strlwr(graphicsformat);
 
+	// 98GRAPH HACK
+	memcpy(OrigGraphicsFormat, EpisodeInfo.GraphicsFormat, sizeof(OrigGraphicsFormat));
+	Is98Graph = !strcmp(EpisodeInfo.GraphicsFormat, "98");
+	if (Is98Graph) {
+		snprintf(EpisodeInfo.GraphicsFormat, sizeof(EpisodeInfo.GraphicsFormat), "VGA");
+	}
 
 	/* Adjust for 3 or 4 byte GRSTARTS */
 	if (EpisodeInfo.GrStarts != 3 && EpisodeInfo.GrStarts != 4)
@@ -605,7 +616,7 @@ void k456_export_begin(SwitchStruct *switches) {
 	} else {
 		setcol_warning;
 		do_output("Cannot find %sdict.%s, Extracting %sDICT from the exe.\n", graphicsformat, 
-				EpisodeInfo.GameExt, EpisodeInfo.GraphicsFormat);
+				EpisodeInfo.GameExt, OrigGraphicsFormat);
 		setcol_normal;
 		filetoread = exefile;
 		offset = exeheaderlen + EpisodeInfo.OffEgaDict;
@@ -615,7 +626,7 @@ void k456_export_begin(SwitchStruct *switches) {
 	/* Get the ?GAHEAD Data */
 	EgaHead = malloc(EpisodeInfo.NumChunks * sizeof (uint32_t));
 	if (!EgaHead)
-		quit("Not enough memory to read %sHEAD!", EpisodeInfo.GraphicsFormat);
+		quit("Not enough memory to read %sHEAD!", OrigGraphicsFormat);
 
 	if (headfile) {
 		filetoread = headfile;
@@ -623,7 +634,7 @@ void k456_export_begin(SwitchStruct *switches) {
 	} else if (exefile) {
 		setcol_warning;
 		do_output("Cannot find %shead.%s, Extracting %sHEAD data from the exe.\n", graphicsformat,
-				EpisodeInfo.GameExt, EpisodeInfo.GraphicsFormat);
+				EpisodeInfo.GameExt, OrigGraphicsFormat);
 		setcol_normal;
 		filetoread = exefile;
 		offset = exeheaderlen + EpisodeInfo.OffEgaHead, SEEK_SET;
@@ -661,7 +672,7 @@ void k456_export_begin(SwitchStruct *switches) {
 
 	CompEgaGraphData = (uint8_t *) malloc(egagraphlen);
 	if (!CompEgaGraphData)
-		quit("Not enough memory to read %sGRAPH!", EpisodeInfo.GraphicsFormat);
+		quit("Not enough memory to read %sGRAPH!", OrigGraphicsFormat);
 
 	fread(CompEgaGraphData, egagraphlen, 1, graphfile);
 
@@ -671,7 +682,7 @@ void k456_export_begin(SwitchStruct *switches) {
 	do_output("Decompressing: ");
 	EgaGraph = (ChunkStruct *) malloc(EpisodeInfo.NumChunks * sizeof (ChunkStruct));
 	if (!EgaGraph)
-		quit("Not enough memory to decompress %sGRAPH!", EpisodeInfo.GraphicsFormat);
+		quit("Not enough memory to decompress %sGRAPH!", OrigGraphicsFormat);
 	for (i = 0; i < EpisodeInfo.NumChunks; i++) {
 		/* Show that something is happening */
 		showprogress((int) ((i * 100) / EpisodeInfo.NumChunks));
@@ -680,6 +691,8 @@ void k456_export_begin(SwitchStruct *switches) {
 
 		/* Make sure the chunk is valid */
 		if (offset != grstart_mask) {
+			bool isCompressed = !Is98Graph || ((i != 0) && ((i < EpisodeInfo.IndexBitmaps) || (i >= EpisodeInfo.IndexBitmaps + VGA_98GRAPH_HELPSCREENS_PICS_NUM)));
+
 			inlen = 0;
 			/* Find out the input length */
 			for (j = i + 1; j < EpisodeInfo.NumChunks; j++) {
@@ -694,7 +707,15 @@ void k456_export_begin(SwitchStruct *switches) {
 				inlen = egagraphlen - offset;
 
 			/* Get the expanded length of the chunk */
-			if (i >= EpisodeInfo.Index8Tiles && i < EpisodeInfo.Index32MaskedTiles + EpisodeInfo.Num32MaskedTiles) {
+			if (!isCompressed) { // 98GRAPH HACK
+				outlen = inlen;
+				if (i == 0) {
+					/* Not pretty, but the original table is missing a few entries which we recreate */
+					/* later, *and* its "outlen" value is larger-than-expected (by 128 bytes)        */
+					offset += sizeof (uint32_t);
+					outlen = (outlen > sizeof(BitmapHeadStruct)*EpisodeInfo.NumBitmaps) ? outlen : sizeof(BitmapHeadStruct)*EpisodeInfo.NumBitmaps;
+				}
+			} else if (i >= EpisodeInfo.Index8Tiles && i < EpisodeInfo.Index32MaskedTiles + EpisodeInfo.Num32MaskedTiles) {
 				/* Expanded sizes of 8, 16,and 32 tiles are implicit */
 				if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
 					if (i >= EpisodeInfo.Index16MaskedTiles) /* 16x16 tiles are one/chunk */
@@ -734,18 +755,23 @@ void k456_export_begin(SwitchStruct *switches) {
 			EgaGraph[i].data = (uint8_t *) malloc(outlen);
 			if (!EgaGraph[i].data)
 				quit("Not enough memory to decompress %sGRAPH chunk %d (size %X at %X)!", 
-						EpisodeInfo.GraphicsFormat, i, outlen, offset);
+						OrigGraphicsFormat, i, outlen, offset);
 
 			if (DebugMode) {
 				gotoxy(0, wherey() + 1);
 				do_output("Expanding chunk:");
 				gotoxy(30, wherey());
 				setcol(COL_PROGRESS, true);
-				do_output("  %sHEAD[%d] = 0x%08lX", EpisodeInfo.GraphicsFormat, i, (unsigned long)EgaHead[i]);
+				do_output("  %sHEAD[%d] = 0x%08lX", OrigGraphicsFormat, i, (unsigned long)EgaHead[i]);
 				setcol_normal;
 				gotoxy(0, wherey() - 1);
 			}
-			huff_expand(CompEgaGraphData + offset, EgaGraph[i].data, inlen, outlen);
+			if (isCompressed) {
+				huff_expand(CompEgaGraphData + offset, EgaGraph[i].data, inlen, outlen);
+			} else { // 98GRAPH HACK
+				memcpy(EgaGraph[i].data, CompEgaGraphData + offset, inlen);
+				EgaGraph[i].len = inlen;
+			}
 
 		} else {
 			EgaGraph[i].len = 0;
@@ -763,8 +789,20 @@ void k456_export_begin(SwitchStruct *switches) {
 	}
 
 	/* Set up pointers to bitmap and sprite tables if said data type exists */
-	if (EpisodeInfo.NumBitmaps > 0)
+	if (EpisodeInfo.NumBitmaps > 0) {
 		BmpHead = (BitmapHeadStruct *) EgaGraph[EpisodeInfo.IndexBitmapTable].data;
+		// NON-PRETTY 98GRAPH HACK - Fill sizes missing from table (chunk no. 0)
+		if (Is98Graph) {
+			for (i = 130; i < 136; ++i) {
+				BmpHead[i].Width = 8;
+				BmpHead[i].Height = 16;
+			}
+			for (i = 136; i < 143; ++i) {
+				BmpHead[i].Width = 24;
+				BmpHead[i].Height = 32;
+			}
+		}
+	}
 
 	if (EpisodeInfo.NumMaskedBitmaps > 0)
 		BmpMaskedHead = (BitmapHeadStruct *) EgaGraph[EpisodeInfo.IndexMaskedBitmapTable].data;
@@ -818,9 +856,14 @@ void k456_export_bitmaps() {
 		if (EgaGraph[EpisodeInfo.IndexBitmaps + i].data) {
 
 			if (!strcmp(EpisodeInfo.GraphicsFormat, "VGA")) {
-				linewidth = planewidth = BmpHead[i].Width/4;
 				planebpp = 8;
-				numofplanes = 4;
+				if (Is98Graph && (i < VGA_98GRAPH_HELPSCREENS_PICS_NUM)) {
+					linewidth = planewidth = BmpHead[i].Width;
+					numofplanes = 1;
+				} else {
+					linewidth = planewidth = BmpHead[i].Width/4;
+					numofplanes = 4;
+				}
 			} else if (!strcmp(EpisodeInfo.GraphicsFormat, "EGA")) {
 				planewidth = BmpHead[i].Width * 8;
 				linewidth = BmpHead[i].Width;
@@ -1819,7 +1862,7 @@ void k456_import_begin(SwitchStruct *switches) {
 	if (strcmp(EpisodeInfo.GraphicsFormat, "CGA") && 
 			strcmp(EpisodeInfo.GraphicsFormat, "EGA") &&
 			strcmp(EpisodeInfo.GraphicsFormat, "VGA"))
-		quit("Graphics Format must be CGA, EGA, or VGA.");
+		quit("Graphics Format must be CGA, EGA, or VGA (cannot import to 98GRAPH)");
 
 	strncpy(graphicsformat, EpisodeInfo.GraphicsFormat, 4);
 	strlwr(graphicsformat);
