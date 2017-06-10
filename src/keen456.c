@@ -1,6 +1,6 @@
 /* KEEN456.C - Keen 4, 5, and 6 import and export routines.
  **
- ** Copyright (c)2016 by Owen Pierce
+ ** Copyright (c)2016-2017 by Owen Pierce
  ** Thanks to NY00123 for CGA import and export routines
  ** Based on LModkeen 2 Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
  ** Based on ModKeen 2.0.1 Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)

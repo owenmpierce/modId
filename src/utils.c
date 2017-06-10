@@ -1,6 +1,6 @@
 /* UTILS.C - Miscellaneous utility functions.
 **
- ** Copyright (c)2016 by Owen Pierce
+ ** Copyright (c)2016-2017 by Owen Pierce
  ** Based on LModkeen 2 Copyright (c)2007 by Ignacio R. Morelle "Shadow Master". (shadowm2006@gmail.com)
 ** Based on ModKeen 2.0.1 Copyright (c)2002-2004 Andrew Durdin. (andy@durdin.net)
 ** 

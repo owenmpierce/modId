@@ -1,6 +1,6 @@
 /* k5splode.c - source for generating Keen 5 galaxy explosion starfield data
  ** 
- ** Copyright (c)2016 by Owen Pierce
+ ** Copyright (c)2016-2017 by Owen Pierce
  **
  **
  ** This software is provided 'as-is', without any express or implied warranty.

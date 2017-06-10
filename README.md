@@ -1,12 +1,27 @@
 # modId
 
-ModId 0.1
+ModId 0.1.2
 (This readme file is based on that found in ModKeen 2.0.1)
 
-Copyright (c)2016 Owen Pierce.  
+Copyright (c)2016-2017 Owen Pierce.
 Thanks to NY00123 and Ian Hanschen for their assistance.
 
 ModId release History
+
+v 0.1.2: June 10, 2017
+* def and palette files updates.
+* VGA fonts are now exported as 8-bpp bmps (S3DNA fix).
+* Added -optimizedcomp.
+* Masked 16x16 tile no. 0 is now imported as-is, rather than being replaced
+with a sparse tile. This was done so the Wolfenstein 3D alpha's graphics
+can be exported and then imported back as-is.
+* BREAKING CHANGE: Expected internal format of VGA masked 16x16 tiles changed,
+for compatibility with the Wolfenstein 3D alpha from March.
+Unfortunately this means, that if a graphics mod was made using an older
+version of ModId for importing VGA masked 16x16 tiles, a new VGAGRAPH file has
+to be re-created. In addition, the tiles' masks have to be added separately.
+The -16color option has no effect on VGA masked 16x16 tiles,
+and the masks are always separated from the color data.
 
 v 0.1: March 10, 2016
 Initial release

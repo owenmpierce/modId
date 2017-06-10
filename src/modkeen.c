@@ -1,6 +1,6 @@
 /* modkeen.c - source for a graphics importer/exporter for 16 bit ID software games
  ** 
- ** Copyright (c)2016 by Owen Pierce, based on LModkeen
+ ** Copyright (c)2016-2017 by Owen Pierce, based on LModkeen
  ** Thanks to NY00123 for assistance
  **
  ** Greetings and thanks from Andrew Durdin to Anders Gavare and 
@@ -40,7 +40,7 @@
 
 
 static char* txt_signature0 =
-"ModId 0.1 - Copyright (c)2016 Owen Pierce\n";
+"ModId 0.1.2 - Copyright (c)2016-2017 Owen Pierce\n";
 static char* txt_signature1 =
 "Based on LMODKEEN 2 release 1 - Windows/Linux ModKeen port, Copyright (c) 2007 by Shadow Master\n";
 static char* txt_signature2 =
