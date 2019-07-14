@@ -1412,9 +1412,9 @@ void k456_export_sprites() {
 				bmp256_rect(spr, spr->width - (SprHead[i].Width), 0,
 						spr->width - 1, spr->height - 1, 8);
 				bmp256_rect(spr,
-						spr->width - (SprHead[i].Width) + ((SprHead[i].Rx1 - SprHead[i].OrgX) >> 4),
+						spr->width - (SprHead[i].Width) + max(0, ((SprHead[i].Rx1 - SprHead[i].OrgX) >> 4)),
 						((SprHead[i].Ry1 - SprHead[i].OrgY) >> 4),
-						spr->width - (SprHead[i].Width) + ((SprHead[i].Rx2 - SprHead[i].OrgX) >> 4),
+						spr->width - (SprHead[i].Width) + max(0, ((SprHead[i].Rx2 - SprHead[i].OrgX) >> 4)),
 						((SprHead[i].Ry2 - SprHead[i].OrgY) >> 4), 12);
 
 				/* Create the bitmap file */
@@ -1476,9 +1476,9 @@ void k456_export_sprites() {
 				bmp256_rect(spr, spr->width - planewidth, 0,
 						spr->width - 1, spr->height - 1, !strcmp(EpisodeInfo.GraphicsFormat, "EGA") ? 8 : 4);
 				bmp256_rect(spr,
-						spr->width - planewidth + ((SprHead[i].Rx1 - SprHead[i].OrgX) >> 4),
+						spr->width - planewidth + max(0, ((SprHead[i].Rx1 - SprHead[i].OrgX) >> 4)),
 						((SprHead[i].Ry1 - SprHead[i].OrgY) >> 4),
-						spr->width - planewidth + ((SprHead[i].Rx2 - SprHead[i].OrgX) >> 4),
+						spr->width - planewidth + max(0, ((SprHead[i].Rx2 - SprHead[i].OrgX) >> 4)),
 						((SprHead[i].Ry2 - SprHead[i].OrgY) >> 4), !strcmp(EpisodeInfo.GraphicsFormat, "EGA") ? 12 : 14);
 
 				/* Create the bitmap file */
