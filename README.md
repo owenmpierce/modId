@@ -154,6 +154,24 @@ ModId accepts the following switches:
     ModId will use 16 colors and create a separate mask. Note that this does
     not apply if VGA graphics are being altered.
 
+Usage examples:
+
+If you want to mod Keen 4 Apogee EGA version 1.4's graphics, they're present
+in a "keen4e" dir along with an EXE unpacked with UNLZEXE, and you want all
+exported data to reside in a "modwip" dir, use a command like this:
+
+modid -gamedef=path\to\def\keen4_ega_apogee_14.def -export -gamedir=keen4e -bmpdir=modwip
+
+After editing the files under "modwip", if you want to prepare them
+for use in the game itself, and you have a copy of the Keen 4 EXE
+under the "keen4mod" dir, use a command looking like this:
+
+modid -gamedef=path\to\def\keen4_ega_apogee_14.def -import -gamedir=keen4mod -bmpdir=modwip
+
+Note that on some platforms (e.g., Linux), case sensitivity might
+have an impact. In the Keen 4 EGA case, it is currently assumed
+that the egagraph.ck4 file name is lowercase. The game EXE name
+is defined in the DEF file (e.g., keen4_ega_apogee_14.def).
 
 OUTPUTS
 =======
