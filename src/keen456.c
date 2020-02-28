@@ -88,6 +88,7 @@ typedef struct {
 	char EgaGraphName[14]; /* Custom EGAGraph name (optional) */
 	char GameExt[4]; /* Archive Extension added */
 	char GraphicsFormat[4]; /* "CGA" "EGA" or "VGA" */
+	char CKPatchVer[8]; /* CKPatch "version" field */
 	unsigned long ExeImageSize;
 	unsigned long ExeHeaderSize;
 	unsigned long OffEgaHead;
@@ -147,6 +148,11 @@ static ValueNode CV_EGAGRAPH[] = {
 
 static ValueNode CV_GRAPHICSFORMAT[] = {
 	VALUENODE("%3s", EpisodeInfoStruct, GraphicsFormat),
+	ENDVALUE
+};
+
+static ValueNode CV_CKPATCHVER[] = {
+	VALUENODE("%7s", EpisodeInfoStruct, CKPatchVer),
 	ENDVALUE
 };
 
@@ -302,6 +308,7 @@ CommandNode SC_GALAXY[] = {
 	COMMANDLEAF(GAMEEXT, NULL, NULL),
 	COMMANDLEAF(EGAGRAPH, NULL, NULL),
 	COMMANDLEAF(GRAPHICSFORMAT, NULL, NULL),
+	COMMANDLEAF(CKPATCHVER, NULL, NULL),
 	COMMANDLEAF(GRSTARTS, NULL, NULL),
 	COMMANDLEAF(EXEINFO, NULL, NULL),
 	COMMANDNODE(CHUNKS, NULL, NULL),
@@ -2070,9 +2077,10 @@ void k456_import_end() {
 		patchfile = openfile(filename, "w", Switches->Backup);
 
 		fprintf(patchfile, "%%ext %s\n"
-				"%%version 1.4\n" // TODO: Put this in definition file and episode info
+				"%%version %s\n"
 				"# Load the modified graphics\n"
-				"%%egahead egahead.%s\n", EpisodeInfo.GameExt, EpisodeInfo.GameExt);
+				"%%egahead egahead.%s\n",
+				EpisodeInfo.GameExt, EpisodeInfo.CKPatchVer, EpisodeInfo.GameExt);
 		if (Switches->OptimizedComp) {
 			fprintf(patchfile, "%%egadict egadict.%s\n", EpisodeInfo.GameExt);
 		}
