@@ -1,12 +1,21 @@
 # modId
 
-ModId 0.1.2
+ModId 0.1.3
 (This readme file is based on that found in ModKeen 2.0.1)
 
 Copyright (c)2016-2017 Owen Pierce.
 Thanks to NY00123 and Ian Hanschen for their assistance.
 
 ModId release History
+
+v 0.1.3: February 28, 2020
+* K456 sprite export: Clip the bounding box part of exported bitmaps in the
+horizontal dimension so that it doesn't protrude into the graphics part of
+the bitmap.
+* Try creating output dir before exporting.
+* keen456.c: Read CKPatch %version field from .def file instead of
+assuming hardcoded version 1.4, using CKPATCHVER field if present.
+* Add CKPATCHVER to the Bio Menace, Keen Dreams and Keen 4-6 .def files.
 
 v 0.1.2: June 10, 2017
 * def and palette files updates.

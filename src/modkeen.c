@@ -41,7 +41,7 @@
 
 
 static char* txt_signature0 =
-"ModId 0.1.2 - Copyright (c)2016-2017 Owen Pierce\n";
+"ModId 0.1.3 - Copyright (c)2016-2020 Owen Pierce\n";
 static char* txt_signature1 =
 "Based on LMODKEEN 2 release 1 - Windows/Linux ModKeen port, Copyright (c) 2007 by Shadow Master\n";
 static char* txt_signature2 =
