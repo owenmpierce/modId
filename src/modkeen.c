@@ -29,6 +29,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 #include "bmp256.h"
 #include "keen123.h"
@@ -143,6 +144,11 @@ int main(int argc, char *argv[]) {
 		if (switches->EpisodeDefPath) {
 			if (parse_definition_file(switches->EpisodeDefPath,
 						(void **) &DefinitionBufferPtr, CommandRoot)) {
+#ifdef WIN32
+				mkdir(switches->OutputPath);
+#else
+				mkdir(switches->OutputPath, 0777);
+#endif
 				switch (EpisodeInfo.Engine) {
 					case engine_Vorticons:
 						do_k123_export(switches);
