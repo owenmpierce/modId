@@ -951,7 +951,7 @@ int fin_to_bmp(char *finfile, char *bmpfile) {
     int result = 0;
     int x, y, plane;
     int b, bitmask, i;
-    long count, maxcount;
+    uint32_t count, maxcount;
     uint8_t bytes[130];
     uint8_t bytecount;
     fin = fopen(finfile, "rb");
@@ -968,7 +968,7 @@ int fin_to_bmp(char *finfile, char *bmpfile) {
     /* Clear the bitmap */
     bmp256_rect(bmp, 0, 0, 319, 199, 0);
     /* Read the plane data size from the file */
-    fread(&maxcount, sizeof ( long), 1, fin);
+    fread(&maxcount, sizeof ( uint32_t), 1, fin);
     /*printf( "Decompressing...\n" );*/
     count = x = y = 0;
     plane = 1;
@@ -1017,7 +1017,7 @@ int fin_to_bmp(char *finfile, char *bmpfile) {
 /* bmp_to_fin: imports from BMP */
 int bmp_to_fin(char *bmpfile, char *finfile) {
     uint8_t *datstart, *runstart, *probe;
-    long count;
+    uint32_t count;
     int plane, len;
     FILE *fout;
     BITMAP256 *bmp;
@@ -1045,7 +1045,7 @@ int bmp_to_fin(char *bmpfile, char *finfile) {
 
     /* Write the plane data size from the file */
     count = 0x8000L;
-    fwrite(&count, sizeof ( long), 1, fout);
+    fwrite(&count, sizeof ( uint32_t), 1, fout);
     /*printf("Compressing...\n");*/
 
     /* Compress the bits in each plane into the file */
