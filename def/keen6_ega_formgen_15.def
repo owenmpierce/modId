@@ -1,0 +1,31 @@
+#ModId definition file for Keen 6, EGA FormGen/GT release, v1.5
+GALAXY
+	GAMEEXT ck6
+	GRSTARTS 3
+	EXEINFO keen6.exe 0x3F630 0x259B0 0x36F4E 0x2C00
+	CKPATCHVER 1.5
+	CHUNKS 5560
+		FONT		3 3				#num, start
+		FONTM		0 6
+		PICS            37  6	 0      #num, start, tablestart
+		PICM            3   43 	 1
+		SPRITES         390 46   2
+		TILE8           104 436
+		TILE8M          12 437
+		TILE16          2376 438
+		TILE16M         2736 2814
+		TILE32          0 5550
+		TILE32M         0 5550
+
+		TEXT		5550 endart
+
+		B800TEXT 5551 endgame
+		TERMINATOR 5552 commander
+		TERMINATOR 5553 keen
+		B800TEXT 5554 outofmem
+
+		DEMO    	5555 0
+		DEMO    	5556 1
+		DEMO    	5557 2
+		DEMO    	5558 3
+		DEMO    	5559 4
